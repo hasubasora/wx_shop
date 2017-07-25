@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width">
+    <title>浏览器定位</title>
+    <script src="framework/example/zepto.min.js"></script>
+
+</head>
+
+<body>
+    <div id='container'></div>
+    <div id="tip"></div>
+    <div id="panel"></div>
+
+    <script type="text/javascript">
+        var div = document.getElementById("tip");
+        var jd, wd, map, marker, url;
+
+        window.navigator.geolocation.getCurrentPosition(function(position) {
+            jd = position.coords.longitude;
+            wd = position.coords.latitude;
+            //        div.innerHTML += "经度:" + jd + "\n";
+            //        div.innerHTML += "纬度:" + wd + "\n";
+            console.log(jd + '' + wd);
+            url = "http://api.map.baidu.com/telematics/v3/reverseGeocoding?location=" + jd + "," + wd + "&output=json&coord_type=gcj02&ak=ZibGU77gWFX1VtiywtITSbkTjcgMR1rm";
+            $.ajax({
+                type: "GET",
+                url: url,
+                data: {
+                    test: 'ok'
+                },
+                dataType: "jsonp",
+                success: function(data) {
+                    console.log(data);
+                    // alert(data)
+                    for (var i = 0; i < data.results.length; i++) {
+                        console.log(data.results[i].name + data.results[i].address)
+                    }
+                    if (data.status) {
+                        //                    "description": "广东省广州市萝岗区天盈路",
+                        //                    "province": "广东省",
+                        //                     "city": "广州市",
+                        //                    "district": "萝岗区",
+                        //                    "street": "天盈路",
+                        //                    "results": 附近数组
+                    }
+                    alert(data.district)
+                    $("#panel").html(data.description);
+                },
+                error: function(data) {
+                    alert(data);
+                    console.log(data)
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

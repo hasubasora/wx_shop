@@ -236,6 +236,10 @@ img {
   color: #111;
 }
 
+.myAddress {
+  font-size: 1rem;
+}
+
 .white {
   color: white;
   padding: 5px;
@@ -291,7 +295,11 @@ img {
   font-size: 0.75rem;
 }
 
-.iconfont {
+.text-hide {
+  width: 51%;
+}
+
+.iconfonts {
   font-size: 1.6rem !important;
 }
 
