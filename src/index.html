@@ -15,7 +15,7 @@
     <script src="javascripts/controllers.js"></script>
     <script src="https://res.wx.qq.com/open/libs/weuijs/1.0.0/weui.min.js"></script>
     <script src="framework/vue.js"></script>
-    <link rel="stylesheet" href="//at.alicdn.com/t/font_q3imcbbriu9xusor.css">
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_9fj9iimo14te29.css">
     <script src="framework/vue-router.js"></script>
 
     <style>
@@ -79,7 +79,141 @@
 <a href="list.html">列表</a>    <hr>
 </div>
 </template>
+<template id="gouwuche">
+      <div class="page js_show">
+        <div class="page__bd" style="height: 100%;">
+            <div class="weui-tab">
+                <!-- 头部 -->
+                <div class="weui-flex c-h weui-navbar">
+                    <div class="c-left">
+                        <div class="placeholder">
+                            <a href="#/home" class="iconfont icon-zuoyou1"></a>
+                        </div>
+                    </div>
+                    <div class="weui-flex__item c-center">
+                        <div class="placeholder"><span>购物车</span></div>
+                    </div>
+                    <div class="c-right">
+                        <div class="placeholder">
 
+                            <!-- <a href="javascript:void(0)">编辑</a> -->
+                            <a href="javascript:void(0)">完成</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- 头部结束 -->
+                <div class="weui-tab__panel">
+
+                    <!-- 地址区域 -->
+                    <div class="weui-panel__bd">
+                        <div class="weui-panel weui-panel_access">
+                            <!-- 没有地址的时候 -->
+                            <a class="weui-cell weui-cell_access" href="javascript:;">
+                                <div class="weui-cell__hd"></div>
+                                <div class="weui-cell__bd weui-cell_primary">
+                                    <!-- <p>请选择地址...</p> -->
+                                    <p class="weui-media-box__title text-hide">
+                                        <i class="myAddress iconfont icon-icon1460191833045  "></i> 自提地址:广东省广州市萝岗区天慧路3号广州互联网产业园C601深圳市商沃科技有限公司
+                                    </p>
+                                </div>
+                                <span class="weui-cell__ft"></span>
+                            </a>
+                            <!-- 有地址的时候 -->
+                        </div>
+                    </div>
+                    <!-- 地址区域 -->
+                    <!-- 商品区域 -->
+                    <div class="weui-panel weui-panel_access">
+                        <div class="weui-panel__hd">商品清单：(共1件)</div>
+
+                        <div class="weui-panel__bd weui-cells_checkbox">
+                            <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
+                                <!-- 商品选项 -->
+                                <div class="weui-cell__hd">
+                                    <label class="weui-cell weui-check__label" for="s11" style="padding: 0;">
+                                     <input type="checkbox" class="weui-check" name="checkbox1" id="s11">
+                                    <i class="weui-icon-checked"></i>
+                                    </label>
+                                </div>
+                                <!-- 商品图片 -->
+                                <div class="weui-media-box__hd">
+                                    <img class="weui-media-box__thumb" src="framework\lg.jpg" alt="">
+                                </div>
+                                <div class="weui-media-box__bd">
+                                    <h4 class="weui-media-box__desc black">由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道</h4>
+                                    <p class="weui-media-box__desc">299999.00</p>
+                                </div>
+                            </a>
+                            <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
+                                <!-- 商品选项 -->
+                                <div class="weui-cell__hd">
+                                    <label class="weui-cell weui-check__label" for="s11" style="padding: 0;">
+                                     <input type="checkbox" class="weui-check" name="checkbox1" id="s11">
+                                    <i class="weui-icon-checked"></i>
+                                    </label>
+                                </div>
+                                <!-- 商品图片 -->
+                                <div class="weui-media-box__hd">
+                                    <img class="weui-media-box__thumb" src="framework\lg.jpg" alt="">
+                                </div>
+                                <div class="weui-media-box__bd">
+                                    <h4 class="weui-media-box__desc black">由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道</h4>
+                                    <p class="weui-media-box__desc">299999.00</p>
+                                </div>
+                            </a>
+                            <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
+                                <!-- 商品选项 -->
+                                <div class="weui-cell__hd">
+                                    <label class="weui-cell weui-check__label" for="s11" style="padding: 0;">
+                                     <input type="checkbox" class="weui-check" name="checkbox1" id="s11">
+                                    <i class="weui-icon-checked"></i>
+                                    </label>
+                                </div>
+                                <!-- 商品图片 -->
+                                <div class="weui-media-box__hd">
+                                    <img class="weui-media-box__thumb" src="framework\lg.jpg" alt="">
+                                </div>
+                                <div class="weui-media-box__bd">
+                                    <h4 class="weui-media-box__desc black">由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道</h4>
+                                    <p class="weui-media-box__desc">299999.00</p>
+                                </div>
+                            </a>
+                        </div>
+
+
+
+                    </div>
+                    <!-- 商品区域 -->
+
+
+                    <!-- 底部 -->
+
+                </div>
+                <div class="weui-tabbar">
+                    <div class="weui-cells weui-cells_checkbox" style="width:100%;margin-top:0">
+                        <label class="weui-cell weui-check__label" for="s11">
+                            <div class="weui-cell__hd">
+                                <input type="checkbox" class="weui-check" name="checkbox1" id="s11" >
+                                <i class="weui-icon-checked"></i>
+                            </div>
+                            <div class="weui-cell__bd">
+                                <p>￥21324</p>
+                            </div>
+                            <div class="weui-cell__ft">
+                                <!-- <a href="javascript:;" class="weui-btn weui-btn_mini weui-btn_warn" style="vertical-align: middle;">去结算</a> -->
+                                <a href="javascript:;" class="weui-btn weui-btn_mini weui-btn_default" style="vertical-align: middle;">删除</a>
+                            </div>
+                        </label>
+
+                    </div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
 <script>
     Vue.component('tabbar', {
         template: '#tabbar', //用什么模板来渲染他
@@ -130,7 +264,7 @@
         template: '<h2>我是分类</h2>' //用什么模板来渲染他
     });
     const gouwuche = Vue.component('gouwuche', {
-        template: '<h2>我是购物车</h2>' //用什么模板来渲染他
+        template: '#gouwuche' //用什么模板来渲染他
     });
     const my = Vue.component('my', {
         template: '<h2>=32432</h2>' //用什么模板来渲染他
@@ -163,6 +297,9 @@
     }, {
         path: '/my',
         component: my
+    }, {
+        path: '/', //首页固定
+        redirect: '/home'
     }]
 
     // 3. 创建 router 实例，然后传 `routes` 配置
