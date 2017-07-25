@@ -1,4 +1,2 @@
 # Michael
-米迦勒
-ES6+SASS
-GULP
+微信商城第一版
