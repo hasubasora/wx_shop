@@ -127,7 +127,7 @@ a:hover {
 
 html,
 body {
-  font-family: "微软雅黑";
+  font-family: "汉仪旗黑";
   font-size: 100%;
   width: 100%;
   height: 100%;
@@ -496,6 +496,11 @@ img {
   background: white;
   border: 1px solid #999;
   color: #999;
+  float: right;
+}
+
+.borderChild {
+  border-right: 0;
 }
 
 .goodsImg {
