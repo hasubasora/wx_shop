@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>购物车</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="stylesheet" type="text/css" href="framework\style\weui.css">
+    <link rel="stylesheet" type="text/css" href="framework/example/example.css">
+    <link rel="stylesheet" type="text/css" href="stylesheets/main.css">
+
+    <script src="framework/example/zepto.min.js"></script>
+    <script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+    <script src="https://res.wx.qq.com/open/libs/weuijs/1.0.0/weui.min.js"></script>
+    <script src="framework/example/example.js"></script>
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_q3imcbbriu9xusor.css">
+</head>
+
+<body class="gray">
+    <div class="weui-flex c-h">
+        <div class="c-left ">
+            <div class="placeholder ">
+                <a href="#/home " class="iconfont icon-zuoyou1 "></a>
+            </div>
+        </div>
+        <div class="weui-flex__item c-center ">
+            <div class="placeholder "><span>添加地址</span></div>
+        </div>
+        <div class="c-right ">
+            <div class="placeholder "><a href="javascript:alert( '保存') ">保存</a></div>
+        </div>
+    </div>
+
+
+    <!-- input -->
+    <div class="page__bd ">
+
+        <div class="weui-cells__title ">联系人：</div>
+        <div class="weui-cells weui-cells_form ">
+            <!-- 联系人： -->
+            <div class="weui-cell ">
+                <div class="weui-cell__hd "><label class="weui-label">姓名</label></div>
+                <div class="weui-cell__bd ">
+                    <input class="weui-input" id="formName" type="text" name="formName" maxlength="10" placeholder="请填写收货人姓名 ">
+                </div>
+            </div>
+            <!-- 性别 -->
+            <div class="weui-flex">
+                <div class="weui-flex__item">
+                    <div class="placeholder"></div>
+                </div>
+                <div class="weui-flex__item">
+                    <div class="placeholder  weui-cells_checkbox">
+                        <label class="weui-cell weui-check__label" for="s11">
+                            <div class="weui-cell__hd">
+                                <input type="radio" class="weui-check" name="checkbox1" data-msg="1" id="s11" checked="checked">
+                                <i class="weui-icon-checked"></i>
+                            </div>
+                            <div class="weui-cell__bd">
+                                <p>先生</p> 
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="weui-flex__item">
+                    <div class="placeholder  weui-cells_checkbox">
+                        <label class="weui-cell weui-check__label" for="s12">
+                        <div class="weui-cell__hd">
+                            <input type="radio" name="checkbox1" class="weui-check" data-msg="0" id="s12">
+                            <i class="weui-icon-checked"></i>
+                        </div>
+                        <div class="weui-cell__bd">
+                            <p>女士</p>
+                        </div>
+                    </label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 手机号 -->
+            <div class="weui-cell ">
+                <div class="weui-cell__hd "><label class="weui-label ">手机号</label></div>
+                <div class="weui-cell__bd ">
+                    <input class="weui-input" id="tel" type="tel" maxlength="11" placeholder="请输入手机号 ">
+                </div>
+            </div>
+        </div>
+
+
+        <div class="weui-cells__title ">收货地址：</div>
+        <div class="weui-cells weui-cells_form ">
+            <div class="weui-cell ">
+                <div class="weui-cell__hd"><label class="weui-label displayInline">小区/大厦/学校：</label></div>
+                <div class="weui-cell__bd ">
+                    <input class="weui-input" id="addressOne" type="text" maxlength="11" placeholder="选择 ">
+                </div>
+            </div>
+            <div class="weui-cell ">
+                <div class="weui-cell__hd"><label class="weui-label displayInline">楼号-门牌号：</label></div>
+                <div class="weui-cell__bd ">
+                    <input class="weui-input" id="addressTwo" type="text" maxlength="11" placeholder="详细地址（门牌号/楼层） ">
+                </div>
+            </div>
+            <div class="weui-cell ">
+                <div class="weui-cell__hd"><label class="weui-label ">标签</label></div>
+                <div class="weui-cell__bd tabList">
+                    <span data-acs="0" class="acs act">公司</span>
+                    <span data-acs="1" class="acs">学校</span>
+                    <span data-acs="2" class="acs">家</span>
+                </div>
+            </div>
+
+        </div>
+
+
+        <div class="weui-cells weui-cells_form ">
+            <!-- 设为默认 -->
+            <div class="weui-cell weui-cell_switch">
+                <div class="weui-cell__bd">设为默认</div>
+                <div class="weui-cell__ft">
+                    <label for="switchCP" class="weui-switch-cp">
+                        <input id="switchCP" class="weui-switch-cp__input" type="checkbox" checked="checked">
+                        <div class="weui-switch-cp__box"></div>
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div class="weui-btn-area ">
+            <a class="weui-btn weui-btn_primary " href="javascript: " id="showTooltips ">确定</a>
+        </div>
+    </div>
+</body>
+<script>
+    window.onload = function() {
+        document.addEventListener('click', function(params) {
+            var abox = document.querySelectorAll(".acs");
+            for (var i = 0; i < abox.length; i++) {
+                abox[i].onclick = function() {
+                    for (var i = 0; i < abox.length; i++) {
+                        abox[i].classList.remove('act')
+                    }
+                    this.classList.add("act");
+                }
+            }
+        })
+    }
+    document.addEventListener('click', function() {
+        var formName = $$("#formName").value, //名字
+            sexs = document.getElementsByName('checkbox1'),
+            tel = $$('#tel').value,
+            city = $$('#addressOne').value, //省市区
+            street = $$('#addressTwo').value, //街道
+            sex, //性别 0 是女 1 是男
+            acs, //标志 0是公司 1是学校 2是家
+            figs = $$('#switchCP').checked; //默认地址标示 
+        // console.log(document.getElementsByName('checkbox1')[0].checked)
+        // console.log(document.querySelectorAll('.acs').length);
+        // 性别
+        for (var s = 0; s < sexs.length; s++) {
+            if (sexs[s].checked == true) {
+                sex = sexs[s].getAttribute('data-msg');
+                console.log('性别' + sexs[s].getAttribute('data-msg'));
+            }
+        }
+        // 标志
+        for (var i = 0; i < $$$('.acs').length; i++) {
+            // console.log($$$('.acs')[i].classList.contains("act"));
+            if ($$$('.acs')[i].classList.contains("act")) {　　　　
+                console.log($$$('.acs')[i].getAttribute('data-acs'))
+                acs = $$$('.acs')[i].getAttribute('data-acs');
+            }
+        }
+        console.log('名字' + formName)
+        console.log('手机' + tel)
+        console.log('地址' + city + street)
+        console.log(sex)
+        console.log(acs)
+        console.log(figs);
+
+        function $$(params) {
+            return document.querySelector(params);
+        }
+
+        function $$$(params) {
+            return document.querySelectorAll(params);
+        }
+    })
+</script>
+
+</html>

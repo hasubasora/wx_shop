@@ -1,0 +1,99 @@
+    .pagetitle {
+        background: rgb(239, 239, 239);
+        @include height(30px);
+        @include box-shadow(0px 0px 1px 0px #555);
+    }
+    
+    .loginpage {
+        // @include outline(green);
+        width: $big;
+        @include breakpoint($lg) {
+            width: nth($size, 2);
+        }
+        margin: 0 auto;
+        font-size: 12px;
+        @include height(30px);
+        .loginpage-left {
+            @include span(6);
+        }
+        .loginpage-right {
+            @include span(6);
+            >ul {
+                // @include outline;
+                @include span(12);
+                float: right;
+                >li {
+                    // @include outline;
+                    padding: 0 15px;
+                    @include span(2);
+                    @include text-center;
+                    a {
+                        display: block;
+                    }
+                    &:nth-child(1) {
+                        @include span(3);
+                    }
+                    &:nth-child(5) {
+                        @include span(3);
+                        position: relative;
+                         a{
+                             @include text-hide;
+                         }
+                        &.login {
+                            a {
+                                @include span(6);
+                                &:nth-child(2) {
+                                    float: right !important;
+                                }
+                            }
+                           
+                        }
+                        .dropbox {
+                            display: none;
+                            position: absolute;
+                            //outline: 1px solid red;
+                            width: 122px;
+                            top: 35px;
+                            right: 7px;
+                            margin-top: -8px;
+                            color: #999;
+                            @include background(#fff);
+                            padding: 4px 6px;
+                            @include box-shadow(0 1px 2px rgba(0, 0, 0, .5));
+                            z-index: 6;
+                            @extend %triangle;
+                            &:before {
+                                border-color: transparent transparent #fff;
+                                right: 56px;
+                            }
+                            >a {
+                                display: block;
+                                width: 100%;
+                                //outline: 1px solid blue;
+                                line-height: 32px;
+                                color: #666;
+                                padding: 0 16px;
+                                >i {
+                                    font-size: 1rem;
+                                }
+                                &.logout {
+                                    border-top: 1px #eee solid;
+                                }
+                                &:hover {
+                                    background: #F1F1F1;
+                                }
+                            }
+                        }
+                        &:hover {
+                            .dropbox {
+                                display: block;
+                            }
+                        }
+                    }
+                    &:hover {
+                        color: nth($color, 1);
+                    }
+                }
+            }
+        }
+    }

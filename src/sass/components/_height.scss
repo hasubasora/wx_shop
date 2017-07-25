@@ -1,0 +1,301 @@
+.wx-box {
+    width: 105px;
+    margin: 0 auto;
+    .wx-s {
+        position: relative;
+        top: -0.9em;
+        padding: 0 .55em;
+        background-color: #f9f9f9;
+        color: #999999;
+        display: inline-block;
+        vertical-align: middle;
+    }
+    .wx-hold {
+        font-weight: 800;
+        font-size: 20px;
+        color: #111;
+    }
+}
+
+.white {
+    color: white;
+    padding: 5px;
+}
+
+.weui-grids {
+    background: white;
+}
+
+.weui-loadmore__tips {
+    background: #f9f9f9 !important;
+}
+
+.weui-search-bar__label {
+    top: 4px;
+}
+
+.weui-grid__icon {
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+}
+
+.weui-btn_minio {
+    display: block;
+}
+
+.ps {
+    margin: .6rem 0;
+    height: 24px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    font-size: rem(12);
+}
+
+.hideTextTwo {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+}
+
+.black {
+    color: #111111;
+    font-size: rem(16);
+}
+
+.hideText {
+    font-size: rem(12);
+}
+
+.iconfont {
+    font-size: 1.6rem !important;
+}
+
+.green {
+    color: #09BB07;
+}
+
+.grays {
+    color: #999999;
+}
+
+.paddingBottom {
+    padding-bottom: 50px !important;
+}
+
+.c-h {
+    height: 50px;
+    line-height: 50px;
+    border-bottom: 1px solid #ccc;
+    width: 100%;
+    .c-left {
+        .placeholder {
+            text-align: left;
+            padding-left: 5px;
+            width: rem(80);
+            i {
+                font-size: rem(16) !important;
+            }
+        }
+    }
+    .c-center {
+        .placeholder {
+            text-align: center;
+            >span {
+                font-size: rem(20);
+            }
+        }
+    }
+    .c-right {
+        .placeholder {
+            text-align: center;
+            width: rem(80);
+            >a {
+                font-size: rem(16);
+            }
+        }
+    }
+}
+
+.c-name {
+    height: rem(30);
+    line-height: rem(30);
+    font-size: rem(16);
+}
+
+.TheOrder {
+    margin-right: initial;
+    border-radius: 0;
+}
+
+.c-firm {
+    border: 1px solid #70E670;
+    color: #70E670;
+    border-radius: 30px;
+    font-size: rem(16);
+}
+
+.b-line {
+    border-left: 1px solid #ccc;
+}
+
+.center {
+    text-align: center;
+}
+
+.f-left {
+    float: left;
+}
+
+.left {
+    text-align: left;
+}
+
+.right {
+    text-align: right;
+}
+
+.def {
+    background: darkgreen;
+    color: white;
+    padding: 2px 4px;
+}
+
+.gray {
+    background: #f9f9f9;
+}
+
+.width90 {
+    width: 90%;
+}
+
+.green {
+    color: #09BB07;
+    border-radius: 5px;
+}
+
+.wxGreen {
+    color: #09BB07;
+}
+
+.wxText {
+    font-size: 16px !important;
+    margin-left: 10px;
+    vertical-align: middle;
+}
+
+.red {
+    color: red;
+    text-align: center;
+    font-size: rem(16);
+    padding-bottom: 5px;
+}
+
+.noMag {
+    display: block;
+    padding: 10px 0;
+    margin: 0 auto;
+}
+
+.lineBox {
+    display: inline-flex;
+}
+
+.displayInline {
+    display: inline;
+}
+
+.act {
+    border: 1px solid #70E670 !important;
+    color: #70E670!important;
+}
+
+.acs {
+    border: 1px solid #ccc;
+    border-radius: 30px;
+    padding: 0px 8px;
+    color: #ccc;
+}
+
+.colorRed {
+    color: red;
+}
+
+.colorBlack {
+    color: black;
+}
+
+.font {
+    font-size: .8em;
+}
+
+.money {
+    line-height: 36px;
+    text-align: left;
+}
+
+.bord {
+    padding: 5px;
+}
+
+.margin {
+    margin: 0 10px;
+}
+
+.weui-bar__item_on {
+    i.iconfont {
+        color: #09BB07;
+    }
+}
+
+.fons {
+    font-size: 13px !important;
+}
+
+.reds {
+    color: red;
+    font-size: 14px;
+    padding-top: 5px;
+}
+
+.inputNum {
+    width: 25px;
+    height: 25px;
+    background: white;
+    border: 1px solid#999;
+    color: #999;
+}
+
+.goodsImg {
+    height: 100%;
+    width: 100%;
+}
+
+.swiper-container {
+    width: 100%;
+    height: 100%;
+}
+
+.swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+    /* Center slide text vertically */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}

@@ -1,0 +1,134 @@
+@charset "UTF-8";
+//入屏动画，距离，透明度，动画名字，速度，延迟
+@mixin animatop($px, $opac, $name, $m, $s) {
+    @include transform2d(translateY($px));
+    @include opacity($opac);
+    @include animation($m $s $name);
+    //到达目标点停止动画.
+    @include animation-fill-mode(forwards);
+}
+
+@mixin oimg($num) {
+    display: inline-block;
+    max-width: $num;
+    height: auto;
+}
+
+@mixin gradient($Scolor, $Ecolor, $deg:90deg) {
+    //平常的渐变
+    @include background(linear-gradient($deg, $Scolor, $Ecolor));
+    @if $deg==90deg {
+        @include filter-gradient($Scolor, $Ecolor, horizontal);
+    }
+    @else if $deg==180deg {
+        @include filter-gradient($Scolor, $Ecolor, vertical);
+    }
+    //ie用的渐变 vertical horizontal 
+}
+
+// 清楚浮动
+$legacy-support-for-ie:true;
+@mixin clearfix {
+    @if $legacy-support-for-ie {
+        *zoom: 1;
+    }
+    &:before,
+    &:after {
+        content: "";
+        display: table;
+    }
+    &:after {
+        clear: both;
+        overflow: hidden;
+    }
+}
+
+@mixin c3($property, $value) {
+    @each $prefix in -webkit-,
+    -moz-,
+    -ms-,
+    -o-,
+    -khtml-,
+    '' {
+        #{$prefix}#{$property}: $value;
+    }
+}
+
+// 标题
+@mixin height($h:2.5rem) {
+    height: $h;
+    line-height: $h;
+}
+
+@mixin wh($w, $h) {
+    height: $h;
+    width: $w;
+}
+
+@mixin outline($color:red) {
+    outline: 1px solid $color;
+}
+
+@mixin btn($a:.7rem, $b:2.5rem) {
+    padding: $a $b;
+    text-align: center;
+    display: inline-block;
+}
+
+@mixin btn-success {
+    background: rgb(168, 255, 96);
+    color: rgb(255, 255, 255);
+}
+
+@mixin btn-warning {
+    background: rgb(252, 224, 116);
+    color: rgb(255, 255, 255);
+}
+
+@mixin btn-info {
+    background: rgb(121, 157, 251);
+    color: rgb(255, 255, 255);
+}
+
+@mixin btn-error {
+    background: rgb(255, 100, 100);
+    color: rgb(255, 255, 255);
+}
+
+@mixin text($h:2.5rem, $w:15rem) {
+    height: $h;
+    width: $w;
+    text-indent: 5px;
+}
+
+@mixin text-center {
+    text-align: center;
+}
+
+@mixin text-hide($hide:hidden, $wrap:nowrap, $ellipsis:ellipsis) {
+    overflow: $hide;
+    white-space: $wrap;
+    text-overflow: $ellipsis;
+}
+
+@function rem($se, $base:16) {
+    @return ($se/$base)*1rem;
+}
+
+// @function screen($screen){
+//   @if $screen==lg{
+//      @return (max-width 1180px) (min-width 980px);
+//   }
+//   @else if $screen==md{
+//     @return (max-width 980px) (min-width 760px);
+//   }
+//   @else if $screen==sm{
+//     @return (max-width 760px) (min-width 320px);
+//   }
+//   @else if $screen==xs{
+//     @return (max-width 320px);
+//   }
+//   @else if $screen==big{
+//      @return (min-width 1180px);
+//   }
+// }

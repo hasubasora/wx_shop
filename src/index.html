@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>首页</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="stylesheet" type="text/css" href="framework/style/weui.css">
+    <link rel="stylesheet" type="text/css" href="framework/example/example.css">
+    <link rel="stylesheet" type="text/css" href="stylesheets/main.css">
+
+    <script src="framework/example/zepto.min.js"></script>
+    <script src="javascripts/controllers.js"></script>
+    <script src="https://res.wx.qq.com/open/libs/weuijs/1.0.0/weui.min.js"></script>
+    <script src="framework/vue.js"></script>
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_q3imcbbriu9xusor.css">
+    <script src="framework/vue-router.js"></script>
+
+    <style>
+
+    </style>
+</head>
+
+
+<div id="container">
+    <tabbar></tabbar>
+</div>
+
+
+<body>
+
+</body>
+
+<!-- 底部的组件 -->
+<template id="tabbar">
+<div class="page tabbar js_show ">
+    <div class="page__bd" style="height: 100%;">
+        <div class="weui-tab">
+            <div class="weui-tab__panel">
+                <!-- 路由匹配到的组件将渲染在这里 -->
+                <router-view></router-view>
+                <div class="weui-tabbar">
+                    <router-link v-for="(tabs,index) in buttonTab"  :to="tabs.link" class="weui-tabbar__item" :class="{'weui-bar__item_on':tabs.green}">
+                        <div  @click="sub(index)">
+                        <span style="display: inline-block;position: relative;" >
+                        <i :class=tabs.icon class="iconfont"></i>
+                        <p class="weui-tabbar__label"> {{tabs.title}}</p>
+                        <span v-if=index==2 class="weui-badge" style="position: absolute;top: -2px;right: -2px;">{{tabs.num}}</span>
+                        <span v-if=index==3 class="weui-badge weui-badge_dot" style="position: absolute;top: 0;right: -2px;"></span>
+                        </span>
+                       </div>
+                    </router-link>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</template>
+<!-- tabs.green?weui-bar__item_on:'' -->
+
+
+
+<script>
+    Vue.component('tabbar', {
+        template: '#tabbar', //用什么模板来渲染他
+        data() {
+            return {
+                color: 'weui-bar__item_on',
+                buttonTab: [{
+                    "link": "home",
+                    "title": "首页",
+                    "icon": "icon-shouye",
+                    "green": true,
+                    "num": "1"
+                }, {
+                    "link": "fenlei",
+                    "title": "分类",
+                    "icon": "icon-fenlei",
+                    "green": false,
+                    "num": "1"
+                }, {
+                    "link": "gouwuche",
+                    "title": "购物车",
+                    "icon": "icon-icon",
+                    "green": false,
+                    "num": "1"
+                }, {
+                    "link": "my",
+                    "title": "我",
+                    "icon": "icon-wode3",
+                    "green": false,
+                    "num": "1"
+                }]
+            }
+        },
+        methods: {
+            sub(i) {
+                for (var e = 0; e < this.buttonTab.length; e++) {
+                    this.buttonTab[e].green = false;
+                    this.buttonTab[i].green = true;
+                }
+
+            }
+        }
+    });
+    const home = Vue.component('home', {
+        template: '<h2>我是home</h2>' //用什么模板来渲染他
+    });
+    const fenlei = Vue.component('fenlei', {
+        template: '<h2>我是分类</h2>' //用什么模板来渲染他
+    });
+    const gouwuche = Vue.component('gouwuche', {
+        template: '<h2>我是购物车</h2>' //用什么模板来渲染他
+    });
+    const my = Vue.component('my', {
+        template: '<h2>=32432</h2>' //用什么模板来渲染他
+    });
+    // 0. 如果使用模块化机制编程，導入Vue和VueRouter，要调用 Vue.use(VueRouter)
+
+    // 1. 定义（路由）组件。
+    // 可以从其他文件 import 进来
+    // const Foo = {
+    //     template: '<div>foo</div>'
+    // }
+    // const Bar = {
+    //     template: '<div>bar</div>'
+    // }
+
+    // 2. 定义路由
+    // 每个路由应该映射一个组件。 其中"component" 可以是
+    // 通过 Vue.extend() 创建的组件构造器，
+    // 或者，只是一个组件配置对象。
+    // 我们晚点再讨论嵌套路由。
+    const routes = [{
+        path: '/home',
+        component: home
+    }, {
+        path: '/fenlei',
+        component: fenlei
+    }, {
+        path: '/gouwuche',
+        component: gouwuche
+    }, {
+        path: '/my',
+        component: my
+    }]
+
+    // 3. 创建 router 实例，然后传 `routes` 配置
+    // 你还可以传别的配置参数, 不过先这么简单着吧。
+    const router = new VueRouter({
+        routes // （缩写）相当于 routes: routes
+    })
+
+    // 4. 创建和挂载根实例。
+    // 记得要通过 router 配置参数注入路由，
+    // 从而让整个应用都有路由功能
+    const app = new Vue({
+        el: '#container',
+        router,
+        data() {
+            return {
+                buttonTab: [{
+                    "link": "home",
+                    "title": "首页",
+                    "icon": "icon-shouye",
+                    "green": "true",
+                    "num": "1"
+                }, {
+                    "link": "fenlei",
+                    "title": "分类",
+                    "icon": "icon-fenlei",
+                    "green": "true",
+                    "num": "1"
+                }, {
+                    "link": "gouwuche",
+                    "title": "购物车",
+                    "icon": "icon-icon",
+                    "green": "true",
+                    "num": "1"
+                }, {
+                    "link": "my",
+                    "title": "我",
+                    "icon": "icon-wode3",
+                    "green": "true",
+                    "num": "1"
+                }]
+            }
+        },
+
+    })
+
+    // 现在，应用已经启动了！
+</script>
+
+</html>

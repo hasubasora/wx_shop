@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>支付</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="stylesheet" type="text/css" href="framework\style\weui.css">
+    <link rel="stylesheet" type="text/css" href="framework/example/example.css">
+    <link rel="stylesheet" type="text/css" href="stylesheets/main.css">
+
+    <script src="framework/example/zepto.min.js"></script>
+    <script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+    <script src="https://res.wx.qq.com/open/libs/weuijs/1.0.0/weui.min.js"></script>
+    <script src="framework/example/example.js"></script>
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_mf3gxgozu3bd42t9.css">
+</head>
+
+<body class="gray">
+    <div class="page tabbar js_show ">
+        <div class="page__bd" style="height: 100%;">
+            <div class="weui-tab">
+                <div class="weui-tab__panel">
+
+                    <div class="weui-cell">
+                        <div class="weui-cell__hd" style="position: relative;margin-right: 10px; ">
+                            <img src="\framework\lg.jpg" width="100" style="width: 100px;height:100px;border-radius: 50px;">
+
+                        </div>
+                        <div class="weui-cell__bd">
+                            <p>联系人名称</p>
+                            <p style="font-size: 13px;color: #888888;">摘要信息</p>
+                        </div>
+                    </div>
+
+
+
+                    <!--订单金额：  -->
+                    <div class="weui-cells">
+                        <a class="weui-cell weui-cell_access" href="javascript:;">
+                            <div class="weui-cell__bd">
+                                <p>我的订单</p>
+                            </div>
+                            <div class="weui-cell__ft">
+                            </div>
+                        </a>
+                        <div class="weui-flex weui-cell ">
+                            <div class="weui-flex__item weui-tabbar__item">
+                                <i class="iconfont icon-shouye green"></i>
+                                <p class="weui-tabbar__label">首页</p>
+                            </div>
+                            <div class="weui-flex__item weui-tabbar__item">
+                                <i class="iconfont icon-shouye green"></i>
+                                <p class="weui-tabbar__label">首页</p>
+                            </div>
+                            <div class="weui-flex__item weui-tabbar__item">
+                                <i class="iconfont icon-shouye green"></i>
+                                <p class="weui-tabbar__label">首页</p>
+                            </div>
+                            <div class="weui-flex__item weui-tabbar__item">
+                                <i class="iconfont icon-shouye green"></i>
+                                <p class="weui-tabbar__label">首页</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--  -->
+
+                    <div class="weui-tabbar ">
+                        <a :href="#/hc" class="weui-tabbar__item weui-bar__item_on">
+                            <i class="iconfont icon-shouye green"></i>
+                            <p class="weui-tabbar__label">首页</p>
+                        </a>
+                        <a class="weui-tabbar__item">
+                            <i class="iconfont icon-fenlei"></i>
+                            <p class="weui-tabbar__label">分类</p>
+                        </a>
+                        <a href="javascript:;" class="weui-tabbar__item" data-id="input">
+                            <span style="display: inline-block;position: relative;">
+                           <i class="iconfont icon-icon"></i>
+                        <span class="weui-badge" style="position: absolute;top: -2px;right: -13px;">8</span>
+                            </span>
+                            <p class="weui-tabbar__label">购物车</p>
+                        </a>
+                        <a href="javascript:;" class="weui-tabbar__item">
+                            <span style="display: inline-block;position: relative;">
+                          <i class="iconfont icon-wode3"></i>
+                        <span class="weui-badge weui-badge_dot" style="position: absolute;top: 0;right: -6px;"></span>
+                            </span>
+                            <p class="weui-tabbar__label">我</p>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,125 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        'use strict'
+
+        function chef(foods) {
+            let i = 0;
+            return {
+                next() {
+                    let done = (i >= foods.length);
+                    let value = !done ? foods[i++] : undefined;
+                    return {
+                        value: value,
+                        done: done
+                    }
+                }
+            }
+        }
+        let wg = chef(['xihongsi', 'chaojidan']);
+        console.log(wg.next())
+        console.log(wg.next())
+        console.log(wg.next())
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
+
+
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="stylesheets/main.css">
+    <script type="text/javascript" src="framework/vue.js"></script>
+    <script type="text/javascript" src="framework/jquery.1.11.1.min.js"></script>
+    <script src="javascripts/app.js"></script>
+    <title>vuejs</title>
+    <script>
+        window.onload = function() {
+            var agumon = new Vue({
+                el: '#app', //id 在这个盒子里面才能操作下面的东西
+                data: { //数据
+                    message: 'Hello Vue!',
+                    msg: '哈哈哈',
+                    msg1: false,
+                    arr: ['blue', 'red', 'yellow', 'green'],
+                    json: {
+                        a: 'apple',
+                        b: 'banner',
+                        c: 'corll'
+                    },
+                    json2: {
+                        a: '动物',
+                        b: '猫',
+                        c: '狗'
+                    },
+                    todos: [{
+                        text: 'Learn JavaScript'
+                    }, {
+                        text: 'Learn Vue'
+                    }, {
+                        text: 'Build something awesome'
+                    }]
+
+                },
+                methods: { //事件操作
+                    add: function() {
+                        this.arr.push('message');
+                    }
+                }
+            })
+        }
+    </script>
+</head>
+
+<body>
+    <div id="app">
+        <input type="text" v-model='message'> <br>{{ message }}<br>
+        <input type="text" v-model='msg'>
+        <br> {{msg}}
+        <br> {{msg1}}
+        <br> {{arr}}
+        <br> {{json}}
+        <br>
+        <!--循环-->
+        <ul>
+            <li v-for="values in arr">
+                {{values}}
+                <!--{{$index}} 已废除-->
+            </li>
+        </ul>
+        <br>
+        <ul>
+            <li v-for="infos in json">
+                {{infos}}
+            </li>
+        </ul>
+        <br>
+        <ul>
+            <li v-for="(k,v) in json2">
+                {{v}} {{k}}
+            </li>
+        </ul>
+
+        <!--点击按钮事件-->
+        <input type="button" value="点我" v-on:click="add()">
+
+        <!--点击隐藏显示 v-show="true/false"  点击按钮把data里面的变量改变就可以-->
+        <input type="button" value="显示" v-on:click="msg1=true">
+        <div v-show="msg1" style="border:1px solid red; width:30px;height:30px;"></div>
+    </div>
+
+</body>
+
+
+</html>

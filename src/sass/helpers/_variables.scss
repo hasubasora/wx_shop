@@ -1,0 +1,45 @@
+@charset "UTF-8";
+//栅格化布局
+$susyBoxSizing:border-box;
+$susyColumns:12; //列
+$susyGutters:.25; //间隔
+$containerWidth:90%; //最大宽度
+//! Alert
+$alertBackgroundColor: #fff !default;
+$allColor: red;
+//! Pop-Str
+$popStrColor: red orange yellow green blue indigo purple aqua;
+$positionABC: absolute;
+//屏幕大小
+$xs: max-width 320px;
+$sm: 760px 320px;
+$md: 960px 760px;
+$lg: 1180px 960px;
+$big: 1180px;
+//@include breakpoint($big){
+//  height: 30%;
+//}
+
+/*常用颜色*/
+
+$fontFamily:"微软雅黑";
+$bgcolor:#fff #f2f2f2 #ccc #eee #555 #fafdff #fafafa #f6f6f6;
+$color: #1e89e0 #006bc7 #d2e7f9 #8d8d8d;
+//大屏 中屏 iPad 
+$size: 1180px 960px 760px 320px;
+//清楚浮动
+%clearfix:after {
+    content: "";
+    clear: both;
+    display: block;
+    width: 100%;
+}
+
+%triangle:before {
+    content: ' ';
+    border: 5px solid #fff;
+    display: block;
+    position: absolute;
+    top: -10px;
+}
+

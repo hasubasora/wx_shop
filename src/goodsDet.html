@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>订单详情</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="stylesheet" type="text/css" href="framework\style\weui.css">
+    <link rel="stylesheet" type="text/css" href="framework/example/example.css">
+    <link rel="stylesheet" type="text/css" href="stylesheets/main.css">
+
+    <script src="framework/example/zepto.min.js"></script>
+    <script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+    <script src="https://res.wx.qq.com/open/libs/weuijs/1.0.0/weui.min.js"></script>
+    <script src="framework/example/example.js"></script>
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_m3dvmjmx3bnsif6r.css">
+    <link rel="stylesheet" href="framework\swiper\swiper.min.css">
+    <script src="framework\swiper\swiper.min.js"></script>
+</head>
+
+<body class="gray">
+    <div class="page js_show">
+        <div class="page__bd" style="height: 100%;">
+            <div class="weui-tab">
+                <!-- 顶部 -->
+                <div class="weui-flex c-h weui-navbar">
+                    <div class="c-left">
+                        <div class="placeholder">
+                            <a href="javascript:history.go(-1)" class="iconfont icon-zuoyou1"></a>
+                        </div>
+                    </div>
+                    <div class="weui-flex__item c-center">
+                        <div class="placeholder"><span></span></div>
+                    </div>
+                    <div class="c-right">
+                        <div class="placeholder">
+                            <a href="javascript:void(0)"></a>
+                        </div>
+                    </div>
+                </div>
+                <!-- 顶部 -->
+
+                <!-- 中间部分 -->
+                <div class="weui-tab__panel paddingBottom">
+                    <div class="swiper-container" style="height: 70%;">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide"><img class="goodsImg" src="framework\logo.jpg" alt=""></div>
+                            <div class="swiper-slide"><img class="goodsImg" src="framework\lg.jpg" alt=""></div>
+                            <div class="swiper-slide">Slide 3</div>
+                            <div class="swiper-slide">Slide 4</div>
+                            <div class="swiper-slide">Slide 5</div>
+
+                        </div>
+                        <!-- Add Pagination -->
+                        <div class="swiper-pagination"></div>
+                    </div>
+
+                    <!-- Initialize Swiper -->
+                    <script>
+                        var swiper = new Swiper('.swiper-container', {
+                            pagination: '.swiper-pagination',
+                            paginationClickable: true
+                        });
+                    </script>
+
+                    <div class="weui-cell">
+                        <div class="weui-cell__bd">
+                            <h3>由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道</h3>
+                            <p style="font-size: 13px;color: #888888;">摘要信息</p>
+                            <p class="reds">￥12.00</p>
+
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="weui-tabbar">
+                    <p class="weui-media-box">
+                        <i class="iconfont icon-icon"></i>
+                        <i>￥100000.0</i>
+                    </p>
+                    <a href="javascript:; " class="weui-btn weui-btn_warn TheOrder" style="line-height: 55px;">加入购物车</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

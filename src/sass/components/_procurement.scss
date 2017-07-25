@@ -1,0 +1,25 @@
+@charset "UTF-8";
+div{
+	width: 500px;
+	height: 100px;
+	background: #ccc;
+	@include c3(border-radius,30px);
+	@include transition(1s);
+	// @include breakpoint( min-width 1200px){
+	//  width: 600px;
+	// }
+	// @include breakpoint(max(1200px) 1000px){
+	//  width: 400px;
+	// }
+	// @include breakpoint(max(1000px) 700px){
+	//  width: 300px;
+	// }
+	// @include breakpoint(max(700px) 400px){
+	//  width: 200px;
+	// }
+	@include breakpoint($xs){
+	 width: 100px;
+	}
+
+}
+

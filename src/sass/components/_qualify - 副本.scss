@@ -1,0 +1,161 @@
+@charset "UTF-8";
+.page-container{
+  background: nth($bgcolor,1);
+  border: 1px solid #aec0ce;
+  @include span(12);
+  min-width: 950px;
+  }
+
+
+.wizard-steps{
+  @include span(12);
+  margin: 30px auto;
+  height: 40px;
+  li{
+    @include span(4);
+    float: left;
+    >span{
+      font-size: 1rem;
+      display: block;
+      float: left;
+      text-align: center;
+      line-height: 34px;
+      &:nth-of-type(1){
+        @include span(1.3);
+        min-width:36px;
+        height: 36px;
+        border: 2px solid nth($bgcolor,5);
+        border-radius: 20px;
+        background: nth($bgcolor,5);
+        color: nth($bgcolor,2);
+        font-size: 1.3rem;
+        &.forgetNum{
+          background: nth($color,1);
+          border: 2px solid nth($color,1);
+        }
+      }
+      &:nth-of-type(2){
+        @include breakpoint(max(1055px) 360px){
+          font-size: 14px;
+        }
+        @include span(4);
+        min-width:50px;
+        padding: 0 13px;
+        &.txtColor{
+          color: nth($color,1);
+        }
+      }
+      &:nth-of-type(3){
+        @include span(6.5);
+        height: 3px;
+        background: nth($bgcolor,3);
+        margin-top: 18px;
+        &.lineT{
+          @include background(nth($color,1));
+        }
+        &.line{
+          //平常的渐变
+          @include background(linear-gradient(90deg,nth($color,1), nth($bgcolor,3)));
+          //ie用的渐变
+          @include filter-gradient(nth($color,1),nth($bgcolor,3),horizontal);
+        }
+      }
+    }
+  }
+}
+.c-red{
+  color: red;
+}
+.content{
+  outline: 1px solid red;
+    @include clearfix;
+  .pic{
+     outline: 1px solid green;
+     @include span(4);
+      height: 250px;
+  }
+}
+.form-label{
+  width: 100px;
+  height: 100px;
+}
+
+.label{
+  height: 30px;
+  display: block;
+}
+b{
+  @include span(12);
+  text-align: center;
+  display: block;
+  height: 30px;
+  @include clearfix;
+}
+input[type=file]{
+ height: 150px;
+  width: 150px;
+  border: 1px solid red;
+}
+a{
+  height: 150px;
+  width: 150px;
+  border: 1px solid red;
+  display: block;
+  top: 0;
+  left: 0;
+  position: absolute;
+}
+img{
+  top: 0;
+  left: 0;
+  position: absolute;
+}
+.form-label{
+   height: 150px;
+   width: 150px;
+   position: relative;
+   margin: 0 auto;
+}
+.pac{
+  background: url("../images/1024.png") no-repeat;
+  background-size: contain;
+}
+h5{
+  line-height: 30px;
+  height: 30px;
+  text-align: center;
+}
+.fail{
+  text-align: center;
+  line-height: 40px;
+  display: block;
+  color: #ff9800;
+}
+.btn{
+  @include btn;
+  @include btn-success;
+}
+.form-o{
+  line-height: 2rem;
+  height: 2rem;
+  display: inline-block;
+}
+.input-text{
+  line-height: 2.5rem;
+  height: 2.5rem;
+  width: 30%;
+}
+.content-form{
+  padding: 3% 5%;
+}
+.sva{
+  padding:6px 10px;
+  display: block;
+  float: right;
+ @include border-radius(55px);
+ @include btn-info;
+}
+.wrin{
+line-height: 30px;
+  @include btn-info;
+}
