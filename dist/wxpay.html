@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>支付</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="stylesheet" type="text/css" href="framework\style\weui.css">
+    <link rel="stylesheet" type="text/css" href="framework/example/example.css">
+    <link rel="stylesheet" type="text/css" href="stylesheets/main.css">
+
+    <script src="framework/example/zepto.min.js"></script>
+    <script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+    <script src="https://res.wx.qq.com/open/libs/weuijs/1.0.0/weui.min.js"></script>
+    <script src="framework/example/example.js"></script>
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_mf3gxgozu3bd42t9.css">
+</head>
+
+<body class="gray">
+
+
+
+    <div class="page navbar js_show">
+        <div class="page__bd" style="height: 100%;">
+            <div class="weui-tab">
+                <div class="weui-navbar">
+                    <div class="weui-flex c-h">
+                        <div class="c-left">
+                            <div class="placeholder">
+                                <a href="javascript:history.go(-1)" class="iconfont icon-zuoyou1"></a>
+                            </div>
+                        </div>
+                        <div class="weui-flex__item c-center">
+                            <div class="placeholder"><span>确认支付</span></div>
+                        </div>
+                        <div class="c-right">
+                            <div class="placeholder">
+                                <a href="javascript:void(0)"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="weui-tab__panel">
+
+                    <!-- 内 -->
+
+
+                    <!--订单金额：  -->
+                    <div class="weui-cells">
+                        <div class="weui-cell">
+                            <div class="weui-cell__bd">
+                                <p>订单金额：</p>
+                            </div>
+                            <div class="weui-cell__ft red">9999999.00元</div>
+                        </div>
+                    </div>
+
+                    <!--  -->
+
+
+                    <div class="weui-cells weui-cells_checkbox">
+                        <label class="weui-cell weui-check__label" for="wxpay">
+            <div class="weui-cell__bd">
+                <p class="iconfont icon-weixin wxGreen"><span class="wxText">微信支付</span></p>
+            </div>
+            <div class="weui-cell__hd">
+                <input type="radio" class="weui-check" name="wxpay" id="wxpay" checked="checked">
+                <i class="weui-icon-checked"></i>
+            </div>
+        </label>
+
+                        <!-- <label class="weui-cell weui-check__label" for="s11">
+            <div class="weui-cell__bd">
+                <p class="iconfont icon-weixin">支付宝</p>
+            </div>
+            <div class="weui-cell__hd">
+                <input type="radio" class="weui-check" name="wxpay" id="s11" >
+                <i class="weui-icon-checked"></i>
+            </div>
+        </label> -->
+
+                    </div>
+
+                    <div class="weui-btn-area">
+                        <a class="weui-btn weui-btn_primary" href="javascript:" id="showTooltips">去支付</a>
+                    </div>
+
+                    <!-- 内 -->
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>购物车</title>
+    <title>订单详情</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -15,23 +15,22 @@
     <script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
     <script src="https://res.wx.qq.com/open/libs/weuijs/1.0.0/weui.min.js"></script>
     <script src="framework/example/example.js"></script>
-    <link rel="stylesheet" href="//at.alicdn.com/t/font_q3imcbbriu9xusor.css">
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_mf3gxgozu3bd42t9.css">
 </head>
 
 <body class="gray">
-
     <div class="page js_show">
         <div class="page__bd" style="height: 100%;">
             <div class="weui-tab">
-                <!-- 头部 -->
+                <!-- 顶部 -->
                 <div class="weui-flex c-h weui-navbar">
                     <div class="c-left">
                         <div class="placeholder">
-                            <a href="#/home" class="iconfont icon-zuoyou1"></a>
+                            <a href="javascript:history.go(-1)" class="iconfont icon-zuoyou1"></a>
                         </div>
                     </div>
                     <div class="weui-flex__item c-center">
-                        <div class="placeholder"><span>购物车</span></div>
+                        <div class="placeholder"><span>订单详情</span></div>
                     </div>
                     <div class="c-right">
                         <div class="placeholder">
@@ -39,39 +38,24 @@
                         </div>
                     </div>
                 </div>
-                <!-- 头部结束 -->
-                <div class="weui-tab__panel">
+                <!-- 顶部 -->
 
-                    <!-- 地址区域 -->
-                    <div class="weui-panel__bd">
-                        <div class="weui-panel weui-panel_access">
-                            <!-- 没有地址的时候 -->
-                            <a class="weui-cell weui-cell_access" href="javascript:;">
-                                <div class="weui-cell__hd"></div>
-                                <div class="weui-cell__bd weui-cell_primary">
-                                    <p>请选择地址...</p>
-                                </div>
-                                <span class="weui-cell__ft"></span>
-                            </a>
-                            <!-- 有地址的时候 -->
-                            <a class="weui-cell weui-cell_access weui-media-box_appmsg" href="javascript:;">
-                                <div class="weui-cell__hd">
-                                    <div class="weui-media-box__hd ">
-                                        <h4 class="weui-media-box__title c-name">祗堂幻夜</h4>
-                                        <p class="weui-media-box__desc c-firm">公司</p>
-                                    </div>
-                                </div>
-                                <div class="weui-cell__bd weui-cell_primary">
-                                    <div class="weui-media-box__bd">
-                                        <h4 class="weui-media-box__title">13666666666</h4>
-                                        <p class="weui-media-box__desc">广东省广州市萝岗区天慧路3号广州互联网产业园C601深圳市商沃科技有限公司</p>
-                                    </div>
-                                </div>
-                                <span class="weui-cell__ft"></span>
-                            </a>
+                <!-- 中间部分 -->
+                <div class="weui-tab__panel paddingBottom">
+
+                    <!--订单金额：  -->
+                    <div class="weui-cells" style="margin:0">
+                        <div class="weui-cell">
+                            <div class="weui-cell__bd">
+                                <p class="weui-media-box__desc colorBlack">订单编号：200722222222222222 </p>
+                                <p class="weui-media-box__desc colorBlack">下单时间：2017年7月21日14:12:38</p>
+                            </div>
+                            <div class="weui-cell__ft red">代付款</div>
                         </div>
                     </div>
-                    <!-- 地址区域 -->
+
+                    <!--  -->
+
                     <!-- 商品区域 -->
                     <div class="weui-panel weui-panel_access">
                         <div class="weui-panel__hd">商品清单：(共1件)</div>
@@ -87,46 +71,37 @@
                                 </div>
                                 <div class="weui-media-box__ft">x2</div>
                             </a>
-
-                        </div>
-
-
-                        <div class="weui-panel__ft">
-                            <a href="javascript:void(0);" class="weui-cell weui-cell_access weui-cell_link">
-                                <div class="weui-cell__bd">查看更多</div>
-                                <span class="weui-cell__ft"></span>
-                            </a>
                         </div>
                     </div>
                     <!-- 商品区域 -->
-
-
-                    <!-- 底部 -->
-
-                </div>
-                <div class="weui-tabbar">
-                    <div class="weui-cells weui-cells_checkbox" style="width:100%;margin-top:0">
-                        <label class="weui-cell weui-check__label" for="s11">
-                            <div class="weui-cell__hd">
-                                <input type="checkbox" class="weui-check" name="checkbox1" id="s11" >
-                                <i class="weui-icon-checked"></i>
-                            </div>
+                    <div class="weui-cells">
+                        <div class="weui-cell">
                             <div class="weui-cell__bd">
-                                <p>￥21324</p>
+                                <p class="weui-media-box__desc black">祗堂空幻 <span class="black">13888888888</span></p>
+                                <p class="weui-media-box__desc colorBlack">由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道</p>
                             </div>
-                            <div class="weui-cell__ft">
-                                <a href="javascript:;" class="weui-btn weui-btn_mini weui-btn_warn" style="vertical-align: middle;">去结算</a>
-                            </div>
-                        </label>
-
+                        </div>
                     </div>
 
+                    <div class="weui-tabbar bord">
 
+                        <div class=" weui-flex__item ">
+                            <p class="weui-cell__ft colorRed font money">实付:￥1377.90</p>
+                        </div>
+                        <div class="weui-flex__item ">
+                            <a href="javascript:; " class="weui-btn weui-btn_plain-default margin font">取消订单</a>
+                        </div>
+                        <div class="weui-flex__item ">
+                            <a href="javascript:; " class="weui-btn weui-btn_warn margin font">付款</a>
+                        </div>
+
+                    </div>
 
                 </div>
             </div>
         </div>
     </div>
+
 </body>
 
 </html>
