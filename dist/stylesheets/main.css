@@ -529,3 +529,11 @@ img {
   -moz-box-align: center;
   align-items: center;
 }
+
+.listTab ul li {
+  width: 80px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  outline: 1px solid red;
+}
