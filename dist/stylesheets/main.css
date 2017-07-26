@@ -536,9 +536,34 @@ img {
 }
 
 .listTab ul li {
-  width: 80px;
+  width: 94px;
   height: 40px;
   line-height: 40px;
   text-align: center;
-  outline: 1px solid red;
+}
+
+.box {
+  position: relative;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background: #fff;
+}
+.box .boxL {
+  width: 94px;
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow-y: scroll;
+}
+.box .boxR {
+  width: 75%;
+  height: 100%;
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  overflow-y: scroll;
+  border-left: 1px solid red;
 }

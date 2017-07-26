@@ -316,11 +316,36 @@
 .listTab {
     ul {
         li {
-            width: 80px;
+            width: 94px;
             height: 40px;
             line-height: 40px;
             text-align: center;
-            @include outline;
         }
+    }
+}
+
+.box {
+    position: relative;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background: #fff;
+    .boxL {
+        width: 94px;
+        display: inline-block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        overflow-y: scroll;
+    }
+    .boxR {
+        width: 75%;
+        height: 100%;
+        display: inline-block;
+        position: absolute;
+        top: 0;
+        right: 0;
+        overflow-y: scroll;
+        border-left: 1px solid red;
     }
 }

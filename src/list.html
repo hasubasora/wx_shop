@@ -20,7 +20,7 @@
 
 </head>
 
-<body class="gray">
+<body class="">
     <div class="page js_show">
         <div class="page__bd" style="height: 100%;">
             <div class="weui-tab">
@@ -37,7 +37,7 @@
                             <label class="weui-search-bar__label" id="searchText">
                     <i class="weui-icon-search"></i>
                     <span>搜索</span>
-                </label>
+                 </label>
                         </form>
                         <a href="javascript:" class="weui-search-bar__cancel-btn" id="searchCancel">取消</a>
                     </div>
@@ -53,28 +53,77 @@
                 <!-- 顶部 -->
 
                 <!-- 中间部分 -->
-                <div class="weui-tab__panel">
+                <div class="weui-tab__panel" style="padding-bottom: 0;">
                     <!-- 放内容的 -->
 
-                    <div class="weui-flex">
-                        <div class="listTab">
-                            <ul>
-                                <li v-for="(item,index) in 20">{{index}}标题一</li>
 
+                    <div class="box">
+                        <div class="boxL listTab">
+                            <ul>
+                                <li v-for="(item,index) in titleList">{{item}}</li>
                             </ul>
                         </div>
-                        <div class="weui-flex__item">
-                            <ul>
-                                <li>标题一</li>
-                                <li>标题一</li>
-                                <li>标题一</li>
-                                <li>标题一</li>
-                                <li>标题一</li>
-                                <li>标题一</li>
-                                <li>标题一</li>
-                            </ul>
+
+                        <div class="boxR">
+                            <div class="scrollRight">
+                                <a class="weui-cell weui-cell_access" href="javascript:;">
+                                    <div class="weui-cell__bd">
+                                        <div class="weui-loadmore weui-loadmore_line" style="margin: 1.5em auto 0px;">
+                                            <span class="weui-loadmore__tips" style="background-color: #FFFFFF !important;">暂无数据</span>
+                                        </div>
+                                    </div>
+                                    <div class="weui-cell__ft">更多</div>
+                                </a>
+                                <div class="weui-grids">
+                                    <a href="javascript:;" v-for="item in 9" class="weui-grid">
+                                        <div class="weui-grid__icon">
+                                            <img src="framework\lg.jpg" alt="">
+                                        </div>
+                                        <p class="weui-grid__label">Grid</p>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="scrollRight">
+                                <a class="weui-cell weui-cell_access" href="javascript:;">
+                                    <div class="weui-cell__bd">
+                                        <div class="weui-loadmore weui-loadmore_line" style="margin: 1.5em auto 0px;">
+                                            <span class="weui-loadmore__tips" style="background-color: #FFFFFF !important;">暂无数据</span>
+                                        </div>
+                                    </div>
+                                    <div class="weui-cell__ft">更多</div>
+                                </a>
+                                <div class="weui-grids">
+                                    <a href="javascript:;" v-for="item in 9" class="weui-grid">
+                                        <div class="weui-grid__icon">
+                                            <img src="framework\lg.jpg" alt="">
+                                        </div>
+                                        <p class="weui-grid__label">Grid</p>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="scrollRight">
+                                <a class="weui-cell weui-cell_access" href="javascript:;">
+                                    <div class="weui-cell__bd">
+                                        <div class="weui-loadmore weui-loadmore_line" style="margin: 1.5em auto 0px;">
+                                            <span class="weui-loadmore__tips" style="background-color: #FFFFFF !important;">暂无数据</span>
+                                        </div>
+                                    </div>
+                                    <div class="weui-cell__ft">更多</div>
+                                </a>
+                                <div class="weui-grids">
+                                    <a href="javascript:;" v-for="item in 9" class="weui-grid">
+                                        <div class="weui-grid__icon">
+                                            <img src="framework\lg.jpg" alt="">
+                                        </div>
+                                        <p class="weui-grid__label">Grid</p>
+                                    </a>
+                                </div>
+                            </div>
                         </div>
                     </div>
+
+
+
 
                     <!-- 放内容的 -->
                 </div>
@@ -88,8 +137,87 @@
 </body>
 <script>
     new Vue({
-        el: '.weui-tab__panel'
+        el: '.weui-tab__panel',
+        data() {
+            return {
+                offsetH: '',
+                overf: {
+                    'overflow-y': 'scroll'
+                },
+                titleList: ['肉禽蛋品', '冷冻食品', '酒水饮料', '肉禽蛋品', '冷冻食品', '酒水饮料', '肉禽蛋品', '冷冻食品', '酒水饮料', '肉禽蛋品', '冷冻食品', '酒水饮料', '肉禽蛋品', '冷冻食品', '酒水饮料', '肉禽蛋品', '冷冻食品', '酒水饮料']
+            }
+        },
+        created() {
+            this.offsetH = document.body.offsetHeight
+            var offsetH = this.offsetH - 50;
+            console.log(offsetH)
+            $('.listTab').css('height', offsetH);
+            $('.boxR').css('height', offsetH);
+            $('.box').css('height', offsetH);
+            $('.weui-tab__panel').css('height', offsetH);
+        }
     })
+
+
+    //电梯导航
+    var dtNav = $("ul.dtNav li");
+    dtNav.not(".last").hover(function() {
+        $(this).addClass("hover");
+    }, function() {
+        $(this).removeClass("hover");
+    });
+
+    dtNav.not(".last").click(function() {
+        dtNav.find("span").removeClass("acive"); //先删除所有span的样式
+        $(this).find("span").addClass("acive"); //再进行添加
+
+        //准备滚动
+        var _index = $(this).index(); //获取他的序列
+        //alert(_index);
+        var _top = $("#three .comBanner").eq(_index).offset().top; //获取每个楼层与顶部的高度
+        //alert(_top);
+        $("body,html").animate({
+            scrollTop: _top
+        }, 500)
+
+    });
+
+
+    //浏览器滚动事件
+    $(window).scroll(function() {
+        var _t = $(this).scrollTop(); //获取浏览器滚动的高度
+        if (_t > 1000) {
+            $("#diantiNav").css({
+                opacity: '1',
+                transform: 'scale(1)',
+                visibility: 'visible'
+            })
+        } else {
+            $("#diantiNav").css({
+                opacity: '0',
+                transform: 'scale(0)',
+                visibility: 'hidden'
+            })
+        }
+        //滚动事件
+        var dT = $("#three .comBanner");
+        dT.each(function() {
+            var _index = $(this).index(); //楼层的序列号
+            var _Height = dT.eq(_index).offset().top + $(this).height() / 2; //获取每个楼层与顶部的高度
+            //如果浏览器滚动高度小于楼层高度
+            if (_t < _Height) {
+                dtNav.find("span").removeClass("acive");
+                dtNav.eq(_index).find("span").addClass("acive");
+                return false;
+            }
+        })
+    });
+    //回去顶部
+    $("#diantiNav .dtNav .last").click(function() {
+        $("body,html").animate({
+            scrollTop: 0
+        }, 500)
+    });
 </script>
 
 </html>
