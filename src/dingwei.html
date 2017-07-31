@@ -2,22 +2,50 @@
 <html>
 
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width">
-    <title>浏览器定位</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="stylesheet" type="text/css" href="framework\style\weui.css">
+    <link rel="stylesheet" type="text/css" href="framework/example/example.css">
+    <link rel="stylesheet" type="text/css" href="stylesheets/main.css">
+
     <script src="framework/example/zepto.min.js"></script>
+    <script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+    <script src="https://res.wx.qq.com/open/libs/weuijs/1.0.0/weui.min.js"></script>
+    <script src="framework/example/example.js"></script>
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_9fj9iimo14te29.css">
 
 </head>
 
 <body>
-    <div id='container'></div>
-    <div id="tip"></div>
-    <div id="panel"></div>
+    <div id='container'>
+        <div class="weui-panel weui-panel_access">
+            <!-- <div class="weui-panel__hd topOne"></div> -->
+            <div class="weui-panel__bd topTwo">
+                <!-- <div class="weui-media-box weui-media-box_text">
+                    <h4 class="weui-media-box__title"><i class="iconfont icon-icon1460191833045"></i>标题一</h4>
+                    <p class="weui-media-box__desc">由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。</p>
+                </div>
+                <div class="weui-media-box weui-media-box_text">
+                    <h4 class="weui-media-box__title">标题二</h4>
+                    <p class="weui-media-box__desc">由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。</p>
+                </div> -->
+            </div>
+            <!-- <div class="weui-panel__ft">
+                <a href="javascript:void(0);" class="weui-cell weui-cell_access weui-cell_link">
+                    <div class="weui-cell__bd">查看更多</div>
+                    <span class="weui-cell__ft"></span>
+                </a>
+            </div> -->
+        </div>
+    </div>
+
 
     <script type="text/javascript">
         var div = document.getElementById("tip");
-        var jd, wd, map, marker, url;
+        var jd, wd, map, marker, url, adds = '',
+            addres;
 
         window.navigator.geolocation.getCurrentPosition(function(position) {
             jd = position.coords.longitude;
@@ -35,20 +63,33 @@
                 dataType: "jsonp",
                 success: function(data) {
                     console.log(data);
-                    // alert(data)
-                    for (var i = 0; i < data.results.length; i++) {
-                        console.log(data.results[i].name + data.results[i].address)
+                    if (data.status = "Success") {
+                        // adds = '<div class="weui-media-box weui-media-box_text">'
+                        // adds += '<h4 class="weui-media-box__title"><i class="iconfont icon-icon1460191833045"></i>' + data.province + data.city + data.district + '</h4>'
+                        // adds += '<p class="weui-media-box__desc">' + data.description + '</p>'
+                        // adds += '</div>'
+                        // $(".topOne").html(adds);
+
+                        for (var i = 0; i < data.results.length; i++) {
+                            console.log(data.results[i].name + data.results[i].address)
+                            addres = '<div class="weui-media-box weui-media-box_text">'
+                            addres += '<h4 class="weui-media-box__title"><i class="iconfont icon-icon1460191833045"></i>' + data.results[i].name + '</h4>'
+                            addres += '<p class="weui-media-box__desc">' + data.results[i].address + '</p>'
+                            addres += '</div>'
+                            adds += addres;
+                        }
+                        $(".topTwo").append(adds);
+
+
                     }
-                    if (data.status) {
-                        //                    "description": "广东省广州市萝岗区天盈路",
-                        //                    "province": "广东省",
-                        //                     "city": "广州市",
-                        //                    "district": "萝岗区",
-                        //                    "street": "天盈路",
-                        //                    "results": 附近数组
-                    }
-                    alert(data.district)
-                    $("#panel").html(data.description);
+                    // alert(data.district)
+
+                    // "description": "广东省广州市萝岗区天盈路",
+                    // "province": "广东省",
+                    // "city": "广州市",
+                    // "district": "萝岗区",
+                    // "street": "天盈路",
+                    // "results": 附近数组
                 },
                 error: function(data) {
                     alert(data);
