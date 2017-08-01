@@ -159,7 +159,7 @@
             jd = position.coords.longitude;
             wd = position.coords.latitude;
 
-            url = "http://restapi.amap.com/v3/assistant/coordinate/convert?locations=" + jd + "," + wd + "&coordsys=gps&output=json&key=c962412697057591abdf0be494fc2c2b";
+            url = "https://restapi.amap.com/v3/assistant/coordinate/convert?locations=" + jd + "," + wd + "&coordsys=gps&output=json&key=c962412697057591abdf0be494fc2c2b";
             $.ajax({
                 type: "GET",
                 url: url,
