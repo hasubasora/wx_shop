@@ -60,16 +60,16 @@
                     <div class="box">
                         <div class="boxL listTab">
                             <ul>
-                                <li v-for="(item,index) in titleList">{{item}}</li>
+                                <li v-for="(item,index) in titleList"><a @click="goAnchor('#anchor-'+index)">{{item}}</a></li>
                             </ul>
                         </div>
-
+                        <!--:id="'anchor-'+index"  -->
                         <div class="boxR">
-                            <div class="scrollRight">
+                            <div class="scrollRight" :id="'anchor-'+index" v-for="(item,index) in titleList">
                                 <a class="weui-cell weui-cell_access" href="javascript:;">
                                     <div class="weui-cell__bd">
                                         <div class="weui-loadmore weui-loadmore_line" style="margin: 1.5em auto 0px;">
-                                            <span class="weui-loadmore__tips" style="background-color: #FFFFFF !important;">暂无数据</span>
+                                            <span class="weui-loadmore__tips" style="background-color: #FFFFFF !important;">{{item}}</span>
                                         </div>
                                     </div>
                                     <div class="weui-cell__ft">更多</div>
@@ -83,42 +83,7 @@
                                     </a>
                                 </div>
                             </div>
-                            <div class="scrollRight">
-                                <a class="weui-cell weui-cell_access" href="javascript:;">
-                                    <div class="weui-cell__bd">
-                                        <div class="weui-loadmore weui-loadmore_line" style="margin: 1.5em auto 0px;">
-                                            <span class="weui-loadmore__tips" style="background-color: #FFFFFF !important;">暂无数据</span>
-                                        </div>
-                                    </div>
-                                    <div class="weui-cell__ft">更多</div>
-                                </a>
-                                <div class="weui-grids">
-                                    <a href="javascript:;" v-for="item in 9" class="weui-grid">
-                                        <div class="weui-grid__icon">
-                                            <img src="framework\lg.jpg" alt="">
-                                        </div>
-                                        <p class="weui-grid__label">Grid</p>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="scrollRight">
-                                <a class="weui-cell weui-cell_access" href="javascript:;">
-                                    <div class="weui-cell__bd">
-                                        <div class="weui-loadmore weui-loadmore_line" style="margin: 1.5em auto 0px;">
-                                            <span class="weui-loadmore__tips" style="background-color: #FFFFFF !important;">暂无数据</span>
-                                        </div>
-                                    </div>
-                                    <div class="weui-cell__ft">更多</div>
-                                </a>
-                                <div class="weui-grids">
-                                    <a href="javascript:;" v-for="item in 9" class="weui-grid">
-                                        <div class="weui-grid__icon">
-                                            <img src="framework\lg.jpg" alt="">
-                                        </div>
-                                        <p class="weui-grid__label">Grid</p>
-                                    </a>
-                                </div>
-                            </div>
+
                         </div>
                     </div>
 
@@ -155,6 +120,14 @@
             $('.boxR').css('height', offsetH);
             $('.box').css('height', offsetH);
             $('.weui-tab__panel').css('height', offsetH);
+        },
+        methods: {
+            goAnchor(selector) {
+                var anchor = this.$el.querySelector(selector);
+                console.log(this.$el)
+                    // document.body.scrollTop = anchor.offsetTop;
+                document.querySelector('.boxR').scrollTop = anchor.offsetTop;
+            }
         }
     })
 
