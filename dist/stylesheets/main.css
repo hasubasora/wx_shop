@@ -552,18 +552,27 @@ img {
 .box .boxL {
   width: 94px;
   display: inline-block;
-  position: absolute;
-  top: 0;
-  left: 0;
   overflow-y: scroll;
 }
+.box .boxL ul li.active {
+  background: #09BB07;
+  -webkit-box-shadow: 0 0 0.5px 1px rgba(140, 140, 140, 0.6);
+  box-shadow: 0 0 0.5px 1px rgba(140, 140, 140, 0.6);
+}
+.box .boxL ul li.active > a {
+  color: #fff;
+}
 .box .boxR {
-  width: 75%;
   height: 100%;
   display: inline-block;
-  position: absolute;
-  top: 0;
-  right: 0;
   overflow-y: scroll;
-  border-left: 1px solid red;
+  border-left: 1px solid #ccc;
+}
+
+.width94 {
+  width: 94px;
+}
+
+[v-cloak] {
+  display: none;
 }
