@@ -17,7 +17,7 @@
     <script src="framework/vue.js"></script>
     <link rel="stylesheet" href="//at.alicdn.com/t/font_9fj9iimo14te29.css">
     <script src="framework/vue-router.js"></script>
-
+    <script src="framework/animate.css"></script>
     <style>
 
     </style>
@@ -200,10 +200,7 @@
 
                     </div>
                     <!-- 商品区域 -->
-
-
-                    <!-- 底部 -->
-
+                 
                 </div>
                 <div class="weui-tabbar" style="bottom: 48px;">
                     <div class="weui-cells weui-cells_checkbox" style="width:100%;margin-top:0">
@@ -230,7 +227,7 @@
         </div>
     </div>
 </template>
-
+<!-- 商品 -->
 <template id="good">
     <div>
     <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg" v-for="(ctys,index) in commoditys"> 
@@ -267,7 +264,7 @@
     </div>
   
 </template>
-
+<!-- 类列表 -->
 <template id="list">
      <div class="page js_show">
         <div class="page__bd" style="height: 100%;">
@@ -301,17 +298,16 @@
                 <!-- 顶部 -->
 
                 <!-- 中间部分 -->
-                <div class="weui-tab__panel" style="padding-bottom: 0;">
+                <div class="weui-tab__panel box" :style="pbtm" >  
                     <!-- 放内容的 -->
-                    <div class="weui-flex box">
-                        <div class="width94">
+                    <div class="weui-flex">
+                  
                             <div class="boxL listTab">
                                 <ul class="scrollsLeft">
                                     <li v-for="(item,index) in titleList" :class="{'active':item.color}"><a @click="goAnchor('#anchor-'+index,index)" v-cloak>{{item.title}}</a></li>
                                 </ul>
                             </div>
-                        </div>
-                        <div class="weui-flex__item" style="overflow-y:scroll">
+                        <div class="weui-flex__item">
                             <div class="scrollsRight" ref="foodsWrapper">
                                 <div class="boxR">
                                     <div class="scrollRight list-item food-list-hook" v-bind:key="item" :id="'anchor-'+index" v-for="(item,index) in titleList">
@@ -345,7 +341,50 @@
         </div>
     </div>
 </template>
+<!-- 我的 -->
+<template id="myHome">
+    <div class="myHome">
+          <!-- 联系人名称 -->
+        <div class="weui-cell">
+            <div class="weui-cell__hd" style="position: relative;margin-right: 10px; ">
+                <img src="\framework\lg.jpg" width="100" style="width: 100px;height:100px;border-radius: 50px;">
 
+            </div>
+            <div class="weui-cell__bd">
+                <p>联系人名称</p>
+                <p style="font-size: 13px;color: #888888;">摘要信息</p>
+            </div>
+        </div>
+        <!--订单金额：  -->
+        <div class="weui-cells">
+            <a class="weui-cell weui-cell_access" href="javascript:;">
+                <div class="weui-cell__bd">
+                    <p>我的订单</p>
+                </div>
+                <div class="weui-cell__ft">
+                </div>
+            </a>
+            <div class="weui-flex weui-cell ">
+                <div class="weui-flex__item weui-tabbar__item">
+                    <i class="iconfont icon-qianbao iconfonts"></i>
+                    <p class="weui-tabbar__label">待付款</p>
+                </div>
+                <div class="weui-flex__item weui-tabbar__item">
+                    <i class="iconfont icon-huoxiang iconfonts"></i>
+                    <p class="weui-tabbar__label">待收货</p>
+                </div>
+                <!-- <div class="weui-flex__item weui-tabbar__item">
+                    <i class="iconfont icon-shouye "></i>
+                    <p class="weui-tabbar__label">评价</p>
+                </div> -->
+                <div class="weui-flex__item weui-tabbar__item">
+                    <i class="iconfont icon-shouhou iconfonts"></i>
+                    <p class="weui-tabbar__label">退款/售后</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
 
 <script>
     Vue.component('tabbar', {
@@ -401,6 +440,11 @@
                 listHeight: [],
                 scrollY: 0,
                 offsetH: '',
+                pbtm: {
+                    'padding-bottom': '0',
+                    'overflow': 'hidden'
+                },
+                overhide: 'overflow: hidden',
                 overf: {
                     'overflow-y': 'scroll'
                 },
@@ -434,23 +478,21 @@
                 }]
             }
         },
-        created() {
+        mounted() {
             this.offsetH = document.body.offsetHeight
-            var offsetH = this.offsetH - 50;
+            var offsetH = this.offsetH - 95;
             console.log(offsetH)
             $('.listTab').css('height', offsetH);
             $('.boxR').css('height', offsetH);
             $('.box').css('height', offsetH);
             $('.weui-tab__panel').css('height', offsetH);
-
-            // this._initScroll()
-            // this._calculateHeight();
         },
 
         methods: {
             goAnchor(selector, i) {
                 var anchor = this.$el.querySelector(selector);
                 // document.body.scrollTop = anchor.offsetTop;
+                console.log(anchor.offsetTop)
                 document.querySelector('.boxR').scrollTop = anchor.offsetTop;
                 for (var e = 0; e < this.titleList.length; e++) {
                     this.titleList[e].color = false;
@@ -505,7 +547,7 @@
         }
     })
     const my = Vue.component('my', {
-        template: '<h2>=32432</h2>' //用什么模板来渲染他
+        template: '#myHome' //用什么模板来渲染他
     });
     // 0. 如果使用模块化机制编程，導入Vue和VueRouter，要调用 Vue.use(VueRouter)
 
