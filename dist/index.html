@@ -16,8 +16,9 @@
     <script src="https://res.wx.qq.com/open/libs/weuijs/1.0.0/weui.min.js"></script>
     <script src="framework/vue.js"></script>
     <link rel="stylesheet" href="//at.alicdn.com/t/font_9fj9iimo14te29.css">
+    <link rel="stylesheet" href="framework/animate.css">
     <script src="framework/vue-router.js"></script>
-    <script src="framework/animate.css"></script>
+    <script src="javascripts\app.js"></script>
     <style>
 
     </style>
@@ -26,8 +27,6 @@
 
 <div id="container">
     <tabbar></tabbar>
-
-
 </div>
 
 
@@ -115,9 +114,14 @@
                                 <div class="weui-cell__hd"></div>
                                 <div class="weui-cell__bd weui-cell_primary">
                                     <!-- <p>请选择地址...</p> -->
+                                     <!-- <router-link :to="'addresss'">  -->
+                                     <router-link :to="{ path: 'cartAddress' }"> 
+                        
                                     <p class="weui-media-box__title text-hide">
                                         <i class="myAddress iconfont icon-icon1460191833045  "></i> 自提地址:广东省广州市萝岗区天慧路3号广州互联网产业园C601深圳市商沃科技有限公司
                                     </p>
+                                    </router-link>
+                                 
                                 </div>
                                 <span class="weui-cell__ft"></span>
                             </a>
@@ -125,82 +129,10 @@
                         </div>
                     </div>
                     <!-- 地址区域 -->
+
                     <!-- 商品区域 -->
-                    <div class="weui-panel weui-panel_access">
-                        <div class="weui-panel__hd">商品清单：(共1件)</div>
-
-                        <div class="weui-panel__bd weui-cells_checkbox">
-                          
-                           <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
-                                <!-- 商品选项 -->
-                                <div class="weui-cell__hd">
-                                    <label class="weui-cell weui-check__label" for="s11" style="padding: 0;">
-                                     <input type="checkbox" class="weui-check" name="checkbox1" id="s11">
-                                    <i class="weui-icon-checked"></i>
-                                    </label>
-                                </div>
-                                <!-- 商品图片 -->
-                                <div class="weui-media-box__hd">
-                                    <img class="weui-media-box__thumb" src="framework\lg.jpg" alt="">
-                                </div>
-                                <div class="weui-media-box__bd">
-                                    <h4 style="height: 36px;font-size: 12px;line-height: 17px; overflow:hidden" class="weui-media-box__desc black">由各种物质组成的巨</h4> 
-                                    <div class="weui-media-box__desc">
-                                        <div class="weui-flex">
-                                            <div class="weui-flex__item">
-                                                <div class="placeholder reds">￥99.00</div>
-                                            </div>
-                                            <!-- <div class="weui-flex__item weui-cell__ft">
-                                                <button class="weui-btn weui-btn_mini weui-btn_warn">购买</button>
-                                            </div> -->
-                                            <div class="weui-flex__item weui-cell__ft">
-                                                <button class="inputNum increase">+</button>                                               
-                                                <input type="number" class="inputNum borderChild" name="" id="">
-                                                 <button class="inputNum borderChild reduce">-</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                             <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
-                                <!-- 商品选项 -->
-                                <div class="weui-cell__hd">
-                                    <label class="weui-cell weui-check__label" for="s11" style="padding: 0;">
-                                     <input type="checkbox" class="weui-check" name="checkbox1" id="s11">
-                                    <i class="weui-icon-checked"></i>
-                                    </label>
-                                </div>
-                                <!-- 商品图片 -->
-                                <div class="weui-media-box__hd">
-                                    <img class="weui-media-box__thumb" src="framework\lg.jpg" alt="">
-                                </div>
-                                <div class="weui-media-box__bd">
-                                    <h4 style="height: 36px;font-size: 12px;line-height: 17px; overflow:hidden" class="weui-media-box__desc black">由各种物质组成的巨</h4> 
-                                    <div class="weui-media-box__desc">
-                                        <div class="weui-flex">
-                                            <div class="weui-flex__item">
-                                                <div class="placeholder reds">￥99.00</div>
-                                            </div>
-                                            <!-- <div class="weui-flex__item weui-cell__ft">
-                                                <button class="weui-btn weui-btn_mini weui-btn_warn">购买</button>
-                                            </div> -->
-                                            <div class="weui-flex__item weui-cell__ft">
-                                                <button class="inputNum increase">+</button>                                               
-                                                <input type="number" class="inputNum borderChild" name="" id="">
-                                                 <button class="inputNum borderChild reduce">-</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                            <good></good>
-                        </div>
-
-
-
-                    </div>
+                   <good></good>
                     <!-- 商品区域 -->
-                 
                 </div>
                 <div class="weui-tabbar" style="bottom: 48px;">
                     <div class="weui-cells weui-cells_checkbox" style="width:100%;margin-top:0">
@@ -217,53 +149,55 @@
                                 <a href="javascript:;" class="weui-btn weui-btn_mini weui-btn_default" style="vertical-align: middle;">删除</a>
                             </div>
                         </label>
-
                     </div>
-
-
-
                 </div>
             </div>
         </div>
     </div>
 </template>
+
 <!-- 商品 -->
 <template id="good">
-    <div>
-    <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg" v-for="(ctys,index) in commoditys"> 
-            <!-- 商品选项 -->
-            <div class="weui-cell__hd">
-                <label class="weui-cell weui-check__label" for="s11" style="padding: 0;">
-                    <input type="checkbox" class="weui-check" name="checkbox1" id="s11">
-                <i class="weui-icon-checked"></i>
-                </label>
-            </div>
-            <!-- 商品图片 -->
-            <div class="weui-media-box__hd">
-                <img class="weui-media-box__thumb" :src="ctys.commodityImg" alt="">
-            </div>
-            <div class="weui-media-box__bd">
-                <h4 style="height: 36px;font-size: 12px;line-height: 17px; overflow:hidden" class="weui-media-box__desc black">{{ctys.title}}</h4> 
-                <div class="weui-media-box__desc">
-                    <div class="weui-flex">
-                        <div class="weui-flex__item">
-                            <div class="placeholder reds">￥{{ctys.price}}</div>
-                        </div>
-                        <!-- <div class="weui-flex__item weui-cell__ft">
-                            <button class="weui-btn weui-btn_mini weui-btn_warn">购买</button>
-                        </div> -->
-                        <div class="weui-flex__item weui-cell__ft">
-                            <button class="inputNum increase">+</button>                                               
-                            <input type="number" class="inputNum borderChild" v-model.number="ctys.value" :value="ctys.value" name="" id="">
-                                <button class="inputNum borderChild reduce">-</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </a>
-    </div>
+<div class="weui-panel weui-panel_access">
+<div class="weui-panel__hd">商品清单：(共{{listLength}}件)</div>
+<div class="weui-panel__bd weui-cells_checkbox">
+<a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg" v-for="(ctys,index) in commoditys"> 
+<!-- 商品选项 -->
+<div class="weui-cell__hd">
+<label class="weui-cell weui-check__label" for="s11" style="padding: 0;">
+<input type="checkbox" class="weui-check" name="checkbox1" id="s11">
+<i class="weui-icon-checked"></i>
+</label>
+</div>
+<!-- 商品图片 -->
+<div class="weui-media-box__hd">
+<img class="weui-media-box__thumb" :src="ctys.commodityImg" alt="">
+</div>
+<div class="weui-media-box__bd">
+<h4 style="height: 36px;font-size: 12px;line-height: 17px; overflow:hidden" class="weui-media-box__desc black">{{ctys.title}}</h4> 
+<div class="weui-media-box__desc">
+<div class="weui-flex">
+<div class="weui-flex__item">
+<div class="placeholder reds">￥{{ctys.price}}</div>
+</div>
+<!-- <div class="weui-flex__item weui-cell__ft">
+<button class="weui-btn weui-btn_mini weui-btn_warn">购买</button>
+</div> -->
+<div class="weui-flex__item weui-cell__ft">
+<button class="inputNum increase">+</button>                                               
+<input type="number" class="inputNum borderChild" v-model.number="ctys.value" :value="ctys.value" name="" id="">
+<button class="inputNum borderChild reduce">-</button>
+</div>
+</div>
+</div>
+</div>
+</a>
+</div>
+</div>
+</div>
   
 </template>
+
 <!-- 类列表 -->
 <template id="list">
      <div class="page js_show">
@@ -341,6 +275,7 @@
         </div>
     </div>
 </template>
+
 <!-- 我的 -->
 <template id="myHome">
     <div class="myHome">
@@ -357,13 +292,15 @@
         </div>
         <!--订单金额：  -->
         <div class="weui-cells">
-            <a class="weui-cell weui-cell_access" href="javascript:;">
+            <router-link :to="{ path: 'myOrder' }">
+              <a class="weui-cell weui-cell_access" href="javascript:;">
                 <div class="weui-cell__bd">
                     <p>我的订单</p>
                 </div>
                 <div class="weui-cell__ft">
                 </div>
-            </a>
+             </a>
+            </router-link>
             <div class="weui-flex weui-cell ">
                 <div class="weui-flex__item weui-tabbar__item">
                     <i class="iconfont icon-qianbao iconfonts"></i>
@@ -386,6 +323,337 @@
     </div>
 </template>
 
+<!-- 我的订单 -->
+<template id="myOrder">
+ <div class="page js_show">
+        <div class="page__bd" style="height: 100%;">
+            <div class="weui-tab">
+                <!-- 顶部 -->
+                <div class="weui-flex c-h weui-navbar">
+                    <div class="c-left">
+                        <div class="placeholder">
+                            <a href="javascript:history.go(-1)" class="iconfont icon-zuoyou1"></a>
+                        </div>
+                    </div>
+                    <div class="weui-flex__item c-center">
+                        <div class="placeholder"><span>订单详情</span></div>
+                    </div>
+                    <div class="c-right">
+                        <div class="placeholder">
+                            <a href="javascript:void(0)"></a>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="weui-navbar" style="top: 50px;">
+                    <div class="weui-navbar__item weui-bar__item_on">
+                        全部
+                    </div>
+                    <div class="weui-navbar__item">
+                        未付款
+                    </div>
+                    <div class="weui-navbar__item">
+                        待收货
+                    </div>
+                    <div class="weui-navbar__item">
+                        已取消
+                    </div>
+                </div>
+
+                <!-- 顶部 -->
+
+                <!-- 中间部分 -->
+                <div class="weui-tab__panel paddingBottom" style="padding-top: 75px;">
+
+
+                    <!--  -->
+
+                    <!-- 商品区域 -->
+                    <div class="weui-cells">
+                        <div class="weui-cell">
+                            <div class="weui-cell__bd">
+                                <p class="font">下单时间：2017年7月24日12:08:58</p>
+                            </div>
+                            <div class="weui-cell__ft font"><a href="javascript:void(0)">取消订单</a></div>
+                        </div>
+                        <div class="weui-cell weui-cell_swiped">
+                            <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
+                                <div class="weui-media-box__hd">
+                                    <img class="weui-media-box__thumb" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHgAAAB4CAMAAAAOusbgAAAAeFBMVEUAwAD///+U5ZTc9twOww7G8MYwzDCH4YcfyR9x23Hw+/DY9dhm2WZG0kbT9NP0/PTL8sux7LFe115T1VM+zz7i+OIXxhes6qxr2mvA8MCe6J6M4oz6/frr+us5zjn2/fa67rqB4IF13XWn6ad83nxa1loqyirn+eccHxx4AAAC/klEQVRo3u2W2ZKiQBBF8wpCNSCyLwri7v//4bRIFVXoTBBB+DAReV5sG6lTXDITiGEYhmEYhmEYhmEYhmEY5v9i5fsZGRx9PyGDne8f6K9cfd+mKXe1yNG/0CcqYE86AkBMBh66f20deBc7wA/1WFiTwvSEpBMA2JJOBsSLxe/4QEEaJRrASP8EVF8Q74GbmevKg0saa0B8QbwBdjRyADYxIhqxAZ++IKYtciPXLQVG+imw+oo4Bu56rjEJ4GYsvPmKOAB+xlz7L5aevqUXuePWVhvWJ4eWiwUQ67mK51qPj4dFDMlRLBZTqF3SDvmr4BwtkECu5gHWPkmDfQh02WLxXuvbvC8ku8F57GsI5e0CmUwLz1kq3kD17R1In5816rGvQ5VMk5FEtIiWislTffuDpl/k/PzscdQsv8r9qWq4LRWX6tQYtTxvI3XyrwdyQxChXioOngH3dLgOFjk0all56XRi/wDFQrGQU3Os5t0wJu1GNtNKHdPqYaGYQuRDfbfDf26AGLYSyGS3ZAK4S8XuoAlxGSdYMKwqZKM9XJMtyqXi7HX/CiAZS6d8bSVUz5J36mEMFDTlAFQzxOT1dzLRljjB6+++ejFqka+mXIe6F59mw22OuOw1F4T6lg/9VjL1rLDoI9Xzl1MSYDNHnPQnt3D1EE7PrXjye/3pVpr1Z45hMUdcACc5NVQI0bOdS1WA0wuz73e7/5TNqBPhQXPEFGJNV2zNqWI7QKBd2Gn6AiBko02zuAOXeWIXjV0jNqdKegaE/kJQ6Bfs4aju04lMLkA2T5wBSYPKDGF3RKhFYEa6A1L1LG2yacmsaZ6YPOSAMKNsO+N5dNTfkc5Aqe26uxHpx7ZirvgCwJpWq/lmX1hA7LyabQ34tt5RiJKXSwQ+0KU0V5xg+hZrd4Bn1n4EID+WkQdgLfRNtvil9SPfwy+WQ7PFBWQz6dGWZBLkeJFXZGCfLUjCgGgqXo5TuSu3cugdcTv/HjqnBTEMwzAMwzAMwzAMwzAMw/zf/AFbXiOA6frlMAAAAABJRU5ErkJggg=="
+                                        alt="">
+                                </div>
+                                <div class="weui-media-box__bd">
+                                    <h4 class="weui-media-box__desc black">由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道</h4>
+                                    <p class="weui-media-box__desc">299999.00</p>
+                                </div>
+                                <div class="weui-media-box__ft">x2</div>
+                            </a>
+                        </div>
+                        <div class="weui-cell">
+                            <div class="weui-cell__bd">
+                                <p class="font">应付金额￥13232.88</p>
+                            </div>
+                            <div class="weui-cell__ft">
+                                <a href="javascript:;" class="weui-btn weui-btn_mini weui-btn_warn" style="display: flex;">付款</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 商品区域 -->
+
+                    <!-- 商品区域 -->
+                    <div class="weui-cells">
+                        <div class="weui-cell">
+                            <div class="weui-cell__bd">
+                                <p class="font">下单时间：2017年7月24日12:08:58</p>
+                            </div>
+                            <div class="weui-cell__ft font"><a href="javascript:void(0)">取消订单</a></div>
+                        </div>
+                        <div class="weui-cell weui-cell_swiped">
+                            <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
+                                <div class="weui-media-box__hd">
+                                    <img class="weui-media-box__thumb" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHgAAAB4CAMAAAAOusbgAAAAeFBMVEUAwAD///+U5ZTc9twOww7G8MYwzDCH4YcfyR9x23Hw+/DY9dhm2WZG0kbT9NP0/PTL8sux7LFe115T1VM+zz7i+OIXxhes6qxr2mvA8MCe6J6M4oz6/frr+us5zjn2/fa67rqB4IF13XWn6ad83nxa1loqyirn+eccHxx4AAAC/klEQVRo3u2W2ZKiQBBF8wpCNSCyLwri7v//4bRIFVXoTBBB+DAReV5sG6lTXDITiGEYhmEYhmEYhmEYhmEY5v9i5fsZGRx9PyGDne8f6K9cfd+mKXe1yNG/0CcqYE86AkBMBh66f20deBc7wA/1WFiTwvSEpBMA2JJOBsSLxe/4QEEaJRrASP8EVF8Q74GbmevKg0saa0B8QbwBdjRyADYxIhqxAZ++IKYtciPXLQVG+imw+oo4Bu56rjEJ4GYsvPmKOAB+xlz7L5aevqUXuePWVhvWJ4eWiwUQ67mK51qPj4dFDMlRLBZTqF3SDvmr4BwtkECu5gHWPkmDfQh02WLxXuvbvC8ku8F57GsI5e0CmUwLz1kq3kD17R1In5816rGvQ5VMk5FEtIiWislTffuDpl/k/PzscdQsv8r9qWq4LRWX6tQYtTxvI3XyrwdyQxChXioOngH3dLgOFjk0all56XRi/wDFQrGQU3Os5t0wJu1GNtNKHdPqYaGYQuRDfbfDf26AGLYSyGS3ZAK4S8XuoAlxGSdYMKwqZKM9XJMtyqXi7HX/CiAZS6d8bSVUz5J36mEMFDTlAFQzxOT1dzLRljjB6+++ejFqka+mXIe6F59mw22OuOw1F4T6lg/9VjL1rLDoI9Xzl1MSYDNHnPQnt3D1EE7PrXjye/3pVpr1Z45hMUdcACc5NVQI0bOdS1WA0wuz73e7/5TNqBPhQXPEFGJNV2zNqWI7QKBd2Gn6AiBko02zuAOXeWIXjV0jNqdKegaE/kJQ6Bfs4aju04lMLkA2T5wBSYPKDGF3RKhFYEa6A1L1LG2yacmsaZ6YPOSAMKNsO+N5dNTfkc5Aqe26uxHpx7ZirvgCwJpWq/lmX1hA7LyabQ34tt5RiJKXSwQ+0KU0V5xg+hZrd4Bn1n4EID+WkQdgLfRNtvil9SPfwy+WQ7PFBWQz6dGWZBLkeJFXZGCfLUjCgGgqXo5TuSu3cugdcTv/HjqnBTEMwzAMwzAMwzAMwzAMw/zf/AFbXiOA6frlMAAAAABJRU5ErkJggg=="
+                                        alt="">
+                                </div>
+                                <div class="weui-media-box__bd">
+                                    <h4 class="weui-media-box__desc black">由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道</h4>
+                                    <p class="weui-media-box__desc">299999.00</p>
+                                </div>
+                                <div class="weui-media-box__ft">x2</div>
+                            </a>
+                            <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
+                                <div class="weui-media-box__hd">
+                                    <img class="weui-media-box__thumb" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHgAAAB4CAMAAAAOusbgAAAAeFBMVEUAwAD///+U5ZTc9twOww7G8MYwzDCH4YcfyR9x23Hw+/DY9dhm2WZG0kbT9NP0/PTL8sux7LFe115T1VM+zz7i+OIXxhes6qxr2mvA8MCe6J6M4oz6/frr+us5zjn2/fa67rqB4IF13XWn6ad83nxa1loqyirn+eccHxx4AAAC/klEQVRo3u2W2ZKiQBBF8wpCNSCyLwri7v//4bRIFVXoTBBB+DAReV5sG6lTXDITiGEYhmEYhmEYhmEYhmEY5v9i5fsZGRx9PyGDne8f6K9cfd+mKXe1yNG/0CcqYE86AkBMBh66f20deBc7wA/1WFiTwvSEpBMA2JJOBsSLxe/4QEEaJRrASP8EVF8Q74GbmevKg0saa0B8QbwBdjRyADYxIhqxAZ++IKYtciPXLQVG+imw+oo4Bu56rjEJ4GYsvPmKOAB+xlz7L5aevqUXuePWVhvWJ4eWiwUQ67mK51qPj4dFDMlRLBZTqF3SDvmr4BwtkECu5gHWPkmDfQh02WLxXuvbvC8ku8F57GsI5e0CmUwLz1kq3kD17R1In5816rGvQ5VMk5FEtIiWislTffuDpl/k/PzscdQsv8r9qWq4LRWX6tQYtTxvI3XyrwdyQxChXioOngH3dLgOFjk0all56XRi/wDFQrGQU3Os5t0wJu1GNtNKHdPqYaGYQuRDfbfDf26AGLYSyGS3ZAK4S8XuoAlxGSdYMKwqZKM9XJMtyqXi7HX/CiAZS6d8bSVUz5J36mEMFDTlAFQzxOT1dzLRljjB6+++ejFqka+mXIe6F59mw22OuOw1F4T6lg/9VjL1rLDoI9Xzl1MSYDNHnPQnt3D1EE7PrXjye/3pVpr1Z45hMUdcACc5NVQI0bOdS1WA0wuz73e7/5TNqBPhQXPEFGJNV2zNqWI7QKBd2Gn6AiBko02zuAOXeWIXjV0jNqdKegaE/kJQ6Bfs4aju04lMLkA2T5wBSYPKDGF3RKhFYEa6A1L1LG2yacmsaZ6YPOSAMKNsO+N5dNTfkc5Aqe26uxHpx7ZirvgCwJpWq/lmX1hA7LyabQ34tt5RiJKXSwQ+0KU0V5xg+hZrd4Bn1n4EID+WkQdgLfRNtvil9SPfwy+WQ7PFBWQz6dGWZBLkeJFXZGCfLUjCgGgqXo5TuSu3cugdcTv/HjqnBTEMwzAMwzAMwzAMwzAMw/zf/AFbXiOA6frlMAAAAABJRU5ErkJggg=="
+                                        alt="">
+                                </div>
+                                <div class="weui-media-box__bd">
+                                    <h4 class="weui-media-box__desc black">由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道</h4>
+                                    <p class="weui-media-box__desc">299999.00</p>
+                                </div>
+                                <div class="weui-media-box__ft">x2</div>
+                            </a>
+                        </div>
+                        <div class="weui-cell">
+                            <div class="weui-cell__bd">
+                                <p class="font">应付金额￥13232.88</p>
+                            </div>
+                            <div class="weui-cell__ft">
+                                <a href="javascript:;" class="weui-btn weui-btn_mini weui-btn_warn" style="display: flex;">付款</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 商品区域 -->
+
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+
+<!-- 地址 -->
+<template id="cartAddress">
+     <div class="page navbar js_show">
+        <div class="page__bd" style="height: 100%;">
+            <div class="weui-tab">
+                <div class="weui-navbar">
+                    <div class="weui-flex c-h">
+                        <div class="c-left">
+                            <div class="placeholder">
+                                <a href="javascript:history.go(-1)" class="iconfont icon-zuoyou1"></a>
+                            </div>
+                        </div>
+                        <div class="weui-flex__item c-center">
+                            <div class="placeholder"><span>收货地址</span></div>
+                        </div>
+                        <div class="c-right">
+                            <div class="placeholder"><a href="javascript:alert('新增地址')">新增地址</a></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="weui-tab__panel">
+
+                    <!-- 内 -->
+
+                    <div class="weui-flex" v-show="addressList.length==0">
+                        <p class="noMag"> 暂无数据... </p>
+                    </div>
+
+                    <div class="weui-panel__bd" v-show="addressList.length!=0" v-for="(items,index) in addressList" :key="index">
+                        <div class="weui-panel weui-panel_access">
+                            <router-link :to="{ path: 'gouwuche' }">
+                            <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
+                                <div class="weui-media-box__hd">
+                                    <h4 class="weui-media-box__title c-name">{{items.name}}</h4>
+                                    <p class="weui-media-box__desc c-firm" v-show="items.tabNum==0">学校</p>
+                                    <p class="weui-media-box__desc c-firm" v-show="items.tabNum==1">公司</p>
+                                    <p class="weui-media-box__desc c-firm" v-show="items.tabNum==2">家</p>
+                                </div>
+                                <div class="weui-media-box__bd">
+                                    <h4 class="weui-media-box__title">{{items.phone}}</h4>
+                                    <p class="weui-media-box__desc">{{items.address}}</p>
+                                </div>
+                                <router-link :to="{ path: 'addresss' }">  
+                                    <div class="weui-media-box__hd b-line">
+                                    编辑
+                                    </div>
+                                </router-link>
+                            </a>
+                           </router-link>
+                            <div class="weui-panel__f ">
+                                <div class="weui-flex weui-cell  weui-cell_access  weui-cell_link">
+                                    <div class="weui-flex__item">
+                                        <div class="placeholder"></div>
+                                    </div>
+                                    <div class="weui-flex__item">
+                                        <div class="placeholder"></div>
+                                    </div>
+                                    <div class="weui-flex__item">
+                                        <div class="placeholder"></div>
+                                    </div>
+                                    <div class="">
+                                        <div class="placeholder">
+                                            <a href="javascript:void(0);" class="">
+                                                <span class="def" :style="hs" v-show="items.defaults==1">默认地址</span>
+                                                <span class="def" @click="alert" v-show="items.defaults==0">默认地址</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 新增地址 -->
+                    <br>
+                    <router-link :to="{ path: 'addresss' }">  
+                        <div class="weui-flex">
+                            <a href="javascript:;" class="weui-btn weui-btn_default width90 green">+新增地址</a>
+                       </div>
+                    </router-link>
+                 
+                    <br>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+
+<!-- 增加地址 -->
+<template id="addresss">
+  <div class="addressList">
+        <div class="weui-flex c-h">
+        <div class="c-left ">
+            <div class="placeholder ">
+                <a href="#/home " class="iconfont icon-zuoyou1 "></a>
+            </div>
+        </div>
+        <div class="weui-flex__item c-center ">
+            <div class="placeholder "><span>添加地址</span></div>
+        </div>
+        <div class="c-right ">
+            <div class="placeholder "><a href="javascript:alert( '保存') ">保存</a></div>
+        </div>
+    </div>
+    <!-- input -->
+    <div class="page__bd ">
+
+        <div class="weui-cells__title ">联系人：</div>
+        <div class="weui-cells weui-cells_form ">
+            <!-- 联系人： -->
+            <div class="weui-cell ">
+                <div class="weui-cell__hd "><label class="weui-label">姓名</label></div>
+                <div class="weui-cell__bd ">
+                    <input class="weui-input" id="formName" type="text" name="formName" maxlength="10" placeholder="请填写收货人姓名 ">
+                </div>
+            </div>
+            <!-- 性别 -->
+            <div class="weui-flex">
+                <div class="weui-flex__item">
+                    <div class="placeholder"></div>
+                </div>
+                <div class="weui-flex__item">
+                    <div class="placeholder  weui-cells_checkbox">
+                        <label class="weui-cell weui-check__label" for="s11">
+                            <div class="weui-cell__hd">
+                                <input type="radio" class="weui-check" name="checkbox1" data-msg="1" id="s11" checked="checked">
+                                <i class="weui-icon-checked"></i>
+                            </div>
+                            <div class="weui-cell__bd">
+                                <p>先生</p> 
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="weui-flex__item">
+                    <div class="placeholder  weui-cells_checkbox">
+                        <label class="weui-cell weui-check__label" for="s12">
+                        <div class="weui-cell__hd">
+                            <input type="radio" name="checkbox1" class="weui-check" data-msg="0" id="s12">
+                            <i class="weui-icon-checked"></i>
+                        </div>
+                        <div class="weui-cell__bd">
+                            <p>女士</p>
+                        </div>
+                    </label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 手机号 -->
+            <div class="weui-cell ">
+                <div class="weui-cell__hd "><label class="weui-label ">手机号</label></div>
+                <div class="weui-cell__bd ">
+                    <input class="weui-input" id="tel" type="tel" maxlength="11" placeholder="请输入手机号 ">
+                </div>
+            </div>
+        </div>
+
+        <div class="weui-cells__title ">收货地址：</div>
+        <div class="weui-cells weui-cells_form ">
+            <div class="weui-cell ">
+                <div class="weui-cell__hd"><label class="weui-label displayInline">小区/大厦/学校：</label></div>
+                <div class="weui-cell__bd ">
+                    <input class="weui-input" id="addressOne" type="text" maxlength="11" placeholder="选择 ">
+                </div>
+            </div>
+            <div class="weui-cell ">
+                <div class="weui-cell__hd"><label class="weui-label displayInline">楼号-门牌号：</label></div>
+                <div class="weui-cell__bd ">
+                    <input class="weui-input" id="addressTwo" type="text" maxlength="11" placeholder="详细地址（门牌号/楼层） ">
+                </div>
+            </div>
+            <div class="weui-cell ">
+                <div class="weui-cell__hd"><label class="weui-label ">标签</label></div>
+                <div class="weui-cell__bd tabList">
+                    <span data-acs="0" class="acs act">公司</span>
+                    <span data-acs="1" class="acs">学校</span>
+                    <span data-acs="2" class="acs">家</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="weui-cells weui-cells_form ">
+            <!-- 设为默认 -->
+            <div class="weui-cell weui-cell_switch">
+                <div class="weui-cell__bd">设为默认</div>
+                <div class="weui-cell__ft">
+                    <label for="switchCP" class="weui-switch-cp">
+                        <input id="switchCP" class="weui-switch-cp__input" type="checkbox" checked="checked">
+                        <div class="weui-switch-cp__box"></div>
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div class="weui-btn-area ">
+            <a class="weui-btn weui-btn_primary " href="javascript: " id="showTooltips ">确定</a>
+        </div>
+    </div>
+  </div>
+</template>
 <script>
     Vue.component('tabbar', {
         template: '#tabbar', //用什么模板来渲染他
@@ -504,7 +772,9 @@
     const gouwuche = Vue.component('gouwuche', {
         template: '#gouwuche', //用什么模板来渲染他
         data() {
-            return {}
+            return {
+
+            }
         }
     });
     Vue.component('good', {
@@ -542,12 +812,78 @@
                 }]
             }
         },
+        computed: {
+            listLength() {
+                return this.commoditys.length;
+            }
+        },
         methods: {
 
         }
     })
     const my = Vue.component('my', {
         template: '#myHome' //用什么模板来渲染他
+    });
+    const myOrder = Vue.component('myOrder', {
+        template: '#myOrder', //用什么模板来渲染他
+    });
+    const cartAddress = Vue.component('cartAddress', {
+        template: '#cartAddress', //用什么模板来渲染他
+        data() {
+            return {
+                hs: "background:#ccc",
+                addressList: [{
+                    addressId: '01', //地址id
+                    name: '名字',
+                    phone: '13666666666',
+                    address: '广东省广州市萝岗区天慧路3号广州互联网产业园C601深圳市商沃科技有限公司',
+                    tabNum: '1', //标签 1 公司 2 家 0 学校
+                    defaults: '1', // 默认地址 1 不是默认0
+                }, {
+                    addressId: '02',
+                    name: '名字2',
+                    phone: '136777777776',
+                    address: '广东省广州市萝岗区天慧路3号广州互联网产业园C601深圳市商沃科技有限公司',
+                    tabNum: '2',
+                    defaults: '0',
+                }],
+
+            }
+        },
+        methods: {
+            alert(g) {
+                alert(123)
+            }
+        }
+    });
+    const addresss = Vue.component('addresss', {
+        template: '#addresss', //用什么模板来渲染他
+        data() {
+            return {
+                addressList: [],
+                tabList: [{
+                    tabID: '1',
+                    tabName: '公司',
+                    tabColor: 'false'
+                }]
+            }
+        },
+        mounted() {
+            document.addEventListener('click', function(params) {
+                var abox = document.querySelectorAll(".acs");
+                for (var i = 0; i < abox.length; i++) {
+                    abox[i].onclick = function() {
+                        for (var i = 0; i < abox.length; i++) {
+                            abox[i].classList.remove('act')
+                        }
+                        this.classList.add("act");
+                    }
+                }
+            })
+        },
+        methods: {
+
+        }
     });
     // 0. 如果使用模块化机制编程，導入Vue和VueRouter，要调用 Vue.use(VueRouter)
 
@@ -566,25 +902,43 @@
     // 或者，只是一个组件配置对象。
     // 我们晚点再讨论嵌套路由。
     const routes = [{
-        path: '/home',
-        component: home
-    }, {
-        path: '/fenlei',
-        component: fenlei
-    }, {
-        path: '/gouwuche',
-        component: gouwuche
-    }, {
-        path: '/my',
-        component: my
-    }, {
-        path: '/', //首页固定
-        redirect: '/home'
-    }]
+            path: '/home',
+            component: home
+        }, {
+            path: '/fenlei',
+            component: fenlei
+        }, {
+            path: '/gouwuche', //{{ $route.params.id }} 展示接收的ID
+            component: gouwuche,
+            // children: [{
+            //     // 当 /user/:id/profile 匹配成功，
+            //     // UserProfile 会被渲染在 User 的 <router-view> 中
+            //     path: '/addresss',
+            //     component: addresss
+            // }]
+        }, {
+            path: '/my',
+            component: my
+        }, {
+            path: '/addresss',
+            component: addresss
+        }, {
+            path: '/cartAddress',
+            component: cartAddress
+        }, {
+            path: '/myOrder',
+            component: myOrder
+        }, {
+            path: '/', //首页固定
+            redirect: '/home'
+        },
+        //  {path: '*', //404 redirect: '/home' }
+    ]
 
     // 3. 创建 router 实例，然后传 `routes` 配置
     // 你还可以传别的配置参数, 不过先这么简单着吧。
     const router = new VueRouter({
+        // mode: 'history',
         routes // （缩写）相当于 routes: routes
     })
 
@@ -596,31 +950,7 @@
         router,
         data() {
             return {
-                buttonTab: [{
-                    "link": "home",
-                    "title": "首页",
-                    "icon": "icon-shouye",
-                    "green": "true",
-                    "num": "1"
-                }, {
-                    "link": "fenlei",
-                    "title": "分类",
-                    "icon": "icon-fenlei",
-                    "green": "true",
-                    "num": "1"
-                }, {
-                    "link": "gouwuche",
-                    "title": "购物车",
-                    "icon": "icon-icon",
-                    "green": "true",
-                    "num": "1"
-                }, {
-                    "link": "my",
-                    "title": "我",
-                    "icon": "icon-wode3",
-                    "green": "true",
-                    "num": "1"
-                }]
+
             }
         },
 
