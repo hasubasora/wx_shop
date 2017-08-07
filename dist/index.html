@@ -89,7 +89,7 @@
                 <div class="weui-flex c-h weui-navbar">
                     <div class="c-left">
                         <div class="placeholder">
-                            <a href="#/home" class="iconfont icon-zuoyou1"></a>
+                            <!-- <a href="#/home" class="iconfont icon-zuoyou1"></a> -->
                         </div>
                     </div>
                     <div class="weui-flex__item c-center">
@@ -97,7 +97,6 @@
                     </div>
                     <div class="c-right">
                         <div class="placeholder">
-
                             <!-- <a href="javascript:void(0)">编辑</a> -->
                             <a href="javascript:void(0)">完成</a>
                         </div>
@@ -133,13 +132,46 @@
                     <!-- 商品区域 -->
       
                        <div class="weui-panel weui-panel_access">
-                            <div class="weui-panel__hd">商品清单：(共{{listLength}}件)</div>
-                            <div class="weui-panel__bd weui-cells_checkbox">
-                             <good></good>
+                             <div class="goodsListScorll">
+                                <div class="weui-panel__hd" >商品清单：(共{{listLength}}件)</div>
+                                <div class="weui-panel__bd weui-cells_checkbox">
+                                     <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg" v-for="(ctys,index) in commoditys">
+                                        <!-- 商品选项 -->
+                                        <div class="weui-cell__hd">
+                                            <label class="weui-cell weui-check__label" for="s11" style="padding: 0;">
+                                            <input type="checkbox" class="weui-check" :name="'checkbox'+index" id="s11">
+                                            <i class="weui-icon-checked"></i>
+                                            </label>
+                                        </div>
+                                        <!-- 商品图片 -->
+                                        <div class="weui-media-box__hd">
+                                            <img class="weui-media-box__thumb" :src="ctys.commodityImg" alt="">
+                                        </div>
+                                        <div class="weui-media-box__bd">
+                                            <h4 style="height: 36px;font-size: 12px;line-height: 17px; overflow:hidden" class="weui-media-box__desc black">{{ctys.title}}</h4>
+                                            <div class="weui-media-box__desc">
+                                                <div class="weui-flex">
+                                                    <div class="weui-flex__item">
+                                                        <div class="placeholder reds">￥{{ctys.price}}</div>
+                                                    </div>
+                                                    <!-- <div class="weui-flex__item weui-cell__ft">
+                                                    <button class="weui-btn weui-btn_mini weui-btn_warn">购买</button>
+                                                    </div> -->
+                                                    <div class="weui-flex__item weui-cell__ft">
+                                                        <button class="inputNum increase">+</button>
+                                                        <input type="number" class="inputNum borderChild" v-model.number="ctys.value" :value="ctys.value" name="" id="">
+                                                        <button class="inputNum borderChild reduce">-</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     <!-- 商品区域 -->
                 </div>
+                <!-- 底部显示区 -->
                 <div class="weui-tabbar" style="bottom: 48px;">
                     <div class="weui-cells weui-cells_checkbox" style="width:100%;margin-top:0">
                         <label class="weui-cell weui-check__label" for="s11">
@@ -162,44 +194,7 @@
     </div>
 </template>
 
-<!-- 商品 -->
-<template id="good">
 
-  <div>
-<a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg" v-for="(ctys,index) in commoditys">
-        <!-- 商品选项 -->
-        <div class="weui-cell__hd">
-            <label class="weui-cell weui-check__label" for="s11" style="padding: 0;">
-<input type="checkbox" class="weui-check" name="checkbox1" id="s11">
-<i class="weui-icon-checked"></i>
-</label>
-        </div>
-        <!-- 商品图片 -->
-        <div class="weui-media-box__hd">
-            <img class="weui-media-box__thumb" :src="ctys.commodityImg" alt="">
-        </div>
-        <div class="weui-media-box__bd">
-            <h4 style="height: 36px;font-size: 12px;line-height: 17px; overflow:hidden" class="weui-media-box__desc black">{{ctys.title}}</h4>
-            <div class="weui-media-box__desc">
-                <div class="weui-flex">
-                    <div class="weui-flex__item">
-                        <div class="placeholder reds">￥{{ctys.price}}</div>
-                    </div>
-                    <!-- <div class="weui-flex__item weui-cell__ft">
-<button class="weui-btn weui-btn_mini weui-btn_warn">购买</button>
-</div> -->
-                    <div class="weui-flex__item weui-cell__ft">
-                        <button class="inputNum increase">+</button>
-                        <input type="number" class="inputNum borderChild" v-model.number="ctys.value" :value="ctys.value" name="" id="">
-                        <button class="inputNum borderChild reduce">-</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </a>
-  </div>
-  
-</template>
 
 <!-- 类列表 -->
 <template id="list">
@@ -776,14 +771,7 @@
         template: '#gouwuche', //用什么模板来渲染他
         data() {
             return {
-
-            }
-        }
-    });
-    Vue.component('good', {
-        template: '#good',
-        data() {
-            return {
+                offsetH: '',
                 commoditys: [{
                     'goodsId': '0031655',
                     'selects': true,
@@ -815,6 +803,13 @@
                 }]
             }
         },
+        mounted() {
+            this.offsetH = document.body.offsetHeight
+            var offsetH = this.offsetH - 95;
+            console.log(offsetH)
+            $('.weui-tab__panel').css('height', offsetH);
+
+        },
         computed: {
             listLength() {
                 return this.commoditys.length;
@@ -823,7 +818,9 @@
         methods: {
 
         }
-    })
+
+    });
+
     const my = Vue.component('my', {
         template: '#myHome' //用什么模板来渲染他
     });
