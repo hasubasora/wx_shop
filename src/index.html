@@ -131,7 +131,13 @@
                     <!-- 地址区域 -->
 
                     <!-- 商品区域 -->
-                   <good></good>
+      
+                       <div class="weui-panel weui-panel_access">
+                            <div class="weui-panel__hd">商品清单：(共{{listLength}}件)</div>
+                            <div class="weui-panel__bd weui-cells_checkbox">
+                             <good></good>
+                            </div>
+                        </div>
                     <!-- 商品区域 -->
                 </div>
                 <div class="weui-tabbar" style="bottom: 48px;">
@@ -158,43 +164,40 @@
 
 <!-- 商品 -->
 <template id="good">
-<div class="weui-panel weui-panel_access">
-<div class="weui-panel__hd">商品清单：(共{{listLength}}件)</div>
-<div class="weui-panel__bd weui-cells_checkbox">
-<a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg" v-for="(ctys,index) in commoditys"> 
-<!-- 商品选项 -->
-<div class="weui-cell__hd">
-<label class="weui-cell weui-check__label" for="s11" style="padding: 0;">
+
+  <div>
+<a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg" v-for="(ctys,index) in commoditys">
+        <!-- 商品选项 -->
+        <div class="weui-cell__hd">
+            <label class="weui-cell weui-check__label" for="s11" style="padding: 0;">
 <input type="checkbox" class="weui-check" name="checkbox1" id="s11">
 <i class="weui-icon-checked"></i>
 </label>
-</div>
-<!-- 商品图片 -->
-<div class="weui-media-box__hd">
-<img class="weui-media-box__thumb" :src="ctys.commodityImg" alt="">
-</div>
-<div class="weui-media-box__bd">
-<h4 style="height: 36px;font-size: 12px;line-height: 17px; overflow:hidden" class="weui-media-box__desc black">{{ctys.title}}</h4> 
-<div class="weui-media-box__desc">
-<div class="weui-flex">
-<div class="weui-flex__item">
-<div class="placeholder reds">￥{{ctys.price}}</div>
-</div>
-<!-- <div class="weui-flex__item weui-cell__ft">
+        </div>
+        <!-- 商品图片 -->
+        <div class="weui-media-box__hd">
+            <img class="weui-media-box__thumb" :src="ctys.commodityImg" alt="">
+        </div>
+        <div class="weui-media-box__bd">
+            <h4 style="height: 36px;font-size: 12px;line-height: 17px; overflow:hidden" class="weui-media-box__desc black">{{ctys.title}}</h4>
+            <div class="weui-media-box__desc">
+                <div class="weui-flex">
+                    <div class="weui-flex__item">
+                        <div class="placeholder reds">￥{{ctys.price}}</div>
+                    </div>
+                    <!-- <div class="weui-flex__item weui-cell__ft">
 <button class="weui-btn weui-btn_mini weui-btn_warn">购买</button>
 </div> -->
-<div class="weui-flex__item weui-cell__ft">
-<button class="inputNum increase">+</button>                                               
-<input type="number" class="inputNum borderChild" v-model.number="ctys.value" :value="ctys.value" name="" id="">
-<button class="inputNum borderChild reduce">-</button>
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-</div>
-</div>
+                    <div class="weui-flex__item weui-cell__ft">
+                        <button class="inputNum increase">+</button>
+                        <input type="number" class="inputNum borderChild" v-model.number="ctys.value" :value="ctys.value" name="" id="">
+                        <button class="inputNum borderChild reduce">-</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </a>
+  </div>
   
 </template>
 
