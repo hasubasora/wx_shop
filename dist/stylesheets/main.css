@@ -476,7 +476,10 @@ img {
   margin: 0 10px;
 }
 
-.weui-bar__item_on i.iconfont {
+.linkActiveClass i.iconfont {
+  color: #09BB07;
+}
+.linkActiveClass p {
   color: #09BB07;
 }
 

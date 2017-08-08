@@ -255,12 +255,21 @@
     margin: 0 10px;
 }
 
-.weui-bar__item_on {
+//激活链接的颜色
+.linkActiveClass {
     i.iconfont {
+        color: #09BB07;
+    }
+    p {
         color: #09BB07;
     }
 }
 
+// .weui-bar__item_on {
+//     i.iconfont {
+//         color: #09BB07;
+//     }
+// }
 .fons {
     font-size: 13px !important;
 }

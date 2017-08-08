@@ -43,7 +43,7 @@
                 <!-- 路由匹配到的组件将渲染在这里 -->
                 <router-view></router-view>
                 <div class="weui-tabbar">
-                    <router-link v-for="(tabs,index) in buttonTab"  :to="tabs.link" class="weui-tabbar__item" :class="{'weui-bar__item_on':tabs.green}">
+                    <router-link v-for="(tabs,index) in buttonTab" :active-class="linkActiveClass" :to="tabs.link" class="weui-tabbar__item">
                         <div  @click="sub(index)">
                         <span style="display: inline-block;position: relative;" >
                         <i :class=tabs.icon class="iconfont iconfonts"></i>
@@ -97,8 +97,8 @@
                     </div>
                     <div class="c-right">
                         <div class="placeholder">
-                            <!-- <a href="javascript:void(0)">编辑</a> -->
-                            <a href="javascript:void(0)">完成</a>
+                            <a href="javascript:void(0)" v-show="edit==true" @click="editSwitch">编辑</a> 
+                            <a href="javascript:void(0)" v-show="edit==false" @click="editSwitch">完成</a>
                         </div>
                     </div>
                 </div>
@@ -115,7 +115,6 @@
                                     <!-- <p>请选择地址...</p> -->
                                      <!-- <router-link :to="'addresss'">  -->
                                      <router-link :to="{ path: 'cartAddress' }"> 
-                        
                                     <p class="weui-media-box__title text-hide">
                                         <i class="myAddress iconfont icon-icon1460191833045  "></i> 自提地址:广东省广州市萝岗区天慧路3号广州互联网产业园C601深圳市商沃科技有限公司
                                     </p>
@@ -130,16 +129,18 @@
                     <!-- 地址区域 -->
 
                     <!-- 商品区域 -->
-      
                        <div class="weui-panel weui-panel_access">
                              <div class="goodsListScorll">
                                 <div class="weui-panel__hd" >商品清单：(共{{listLength}}件)</div>
-                                <div class="weui-panel__bd weui-cells_checkbox">
+                                <div class="weui-panel__bd weui-cells_checkbox" style="text-align:center" v-show="commoditys.length==0">
+                                    <p class=" weui-media-box__desc" style="margin:10px">购物车空荡荡的...</p>
+                                </div>
+                                <div class="weui-panel__bd weui-cells_checkbox" v-show="commoditys.length!=0">
                                      <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg" v-for="(ctys,index) in commoditys">
                                         <!-- 商品选项 -->
                                         <div class="weui-cell__hd">
-                                            <label class="weui-cell weui-check__label" for="s11" style="padding: 0;">
-                                            <input type="checkbox" class="weui-check" :name="'checkbox'+index" id="s11">
+                                            <label class="weui-cell weui-check__label" :for="'goodCheck'+index" style="padding: 0;">
+                                            <input type="checkbox" v-model="ctys.selects" :value="index" class="weui-check" :name="'checkbox'+index" :id="'goodCheck'+index" >
                                             <i class="weui-icon-checked"></i>
                                             </label>
                                         </div>
@@ -158,9 +159,9 @@
                                                     <button class="weui-btn weui-btn_mini weui-btn_warn">购买</button>
                                                     </div> -->
                                                     <div class="weui-flex__item weui-cell__ft">
-                                                        <button class="inputNum increase">+</button>
-                                                        <input type="number" class="inputNum borderChild" v-model.number="ctys.value" :value="ctys.value" name="" id="">
-                                                        <button class="inputNum borderChild reduce">-</button>
+                                                        <button class="inputNum increase" @click="increase(index)">+</button>
+                                                        <input type="number" class="inputNum borderChild" v-model.number="ctys.values" :value="ctys.value" name="" id="" style="text-align:center">
+                                                        <button class="inputNum borderChild reduce" @click="reduce(index)">-</button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -174,27 +175,27 @@
                 <!-- 底部显示区 -->
                 <div class="weui-tabbar" style="bottom: 48px;">
                     <div class="weui-cells weui-cells_checkbox" style="width:100%;margin-top:0">
-                        <label class="weui-cell weui-check__label" for="s11">
+                        <div class="weui-cell weui-check__label">
                             <div class="weui-cell__hd">
-                                <input type="checkbox" class="weui-check" name="checkbox1" id="s11" >
+                                <label for="checkboxAll">
+                                <input type="checkbox" class="weui-check" @click="checkboxAlls" v-model="checkboxAll" name="checkboxAll" id="checkboxAll" >
                                 <i class="weui-icon-checked"></i>
+                                </label>
                             </div>
                             <div class="weui-cell__bd">
-                                <p>￥21324</p>
+                                <p>￥{{total}}</p>
                             </div>
                             <div class="weui-cell__ft">
-                                <!-- <a href="javascript:;" class="weui-btn weui-btn_mini weui-btn_warn" style="vertical-align: middle;">去结算</a> -->
-                                <a href="javascript:;" class="weui-btn weui-btn_mini weui-btn_default" style="vertical-align: middle;">删除</a>
+                                <button type="button" v-show="edit==true"  @click="closing" class="weui-btn weui-btn_mini weui-btn_warn " :class="{'weui-btn_disabled':disableds}" :disabled="disableds" style="vertical-align: middle;">去结算</button>
+                                <span v-show="edit==false" @click="editDel" class="weui-btn weui-btn_mini weui-btn_default" style="vertical-align: middle;margin-top:0">删除</span>
                             </div>
-                        </label>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </template>
-
-
 
 <!-- 类列表 -->
 <template id="list">
@@ -657,7 +658,7 @@
         template: '#tabbar', //用什么模板来渲染他
         data() {
             return {
-                color: 'weui-bar__item_on',
+
                 buttonTab: [{
                     "link": "home",
                     "title": "首页",
@@ -686,13 +687,7 @@
             }
         },
         methods: {
-            sub(i) {
-                for (var e = 0; e < this.buttonTab.length; e++) {
-                    this.buttonTab[e].green = false;
-                    this.buttonTab[i].green = true;
-                }
 
-            }
         }
     });
     const home = Vue.component('home', {
@@ -771,56 +766,112 @@
         template: '#gouwuche', //用什么模板来渲染他
         data() {
             return {
+                edit: true, //显示按钮
+                disableds: false, //禁止结算
+                checkboxAll: false, //全部选择结算
                 offsetH: '',
                 commoditys: [{
                     'goodsId': '0031655',
-                    'selects': true,
+                    'selects': false,
                     'commodityImg': 'images/111.jpg',
                     'title': '名字能多长我不知道你们震他妈的凡人啊傻逼们',
                     'price': '9999.00',
-                    'value': '1'
+                    'values': 1
                 }, {
                     'goodsId': '0031665',
-                    'selects': true,
+                    'selects': false,
                     'commodityImg': 'images/111.jpg',
                     'title': '真陶渊明的待不下去了一群傻逼好凡人',
                     'price': '88.00',
-                    'value': '1'
+                    'values': 1
                 }, {
-                    'goodsId': '0031665',
-                    'selects': true,
+                    'goodsId': '0031675',
+                    'selects': false,
                     'commodityImg': 'images/111.jpg',
                     'title': '真陶渊去了一群傻逼好凡人',
-                    'price': '88.00',
-                    'value': '1'
+                    'price': '882.00',
+                    'values': 2
                 }, {
-                    'goodsId': '0031665',
-                    'selects': true,
+                    'goodsId': '0031685',
+                    'selects': false,
                     'commodityImg': 'images/111.jpg',
                     'title': '一群傻逼好凡人',
-                    'price': '88.00',
-                    'value': '1'
+                    'price': '881.01',
+                    'values': 1
                 }]
             }
         },
         mounted() {
             this.offsetH = document.body.offsetHeight
             var offsetH = this.offsetH - 95;
-            console.log(offsetH)
+            console.log(this.$roete)
             $('.weui-tab__panel').css('height', offsetH);
-
         },
         computed: {
             listLength() {
                 return this.commoditys.length;
-            }
+            },
+            total() {
+                let ices = 0;
+                for (let i in this.commoditys) {
+                    if (this.commoditys[i].selects) {
+                        ices += Number(this.commoditys[i].price) * Number(this.commoditys[i].values)
+                        console.log(typeof Number(this.commoditys[i].price))
+                    }
+                }
+                if (ices == 0) { //按钮禁止
+                    this.disableds = true;
+                } else {
+                    this.disableds = false;
+                }
+                return ices;
+            },
+
         },
         methods: {
-
+            editSwitch(edit) { //选择商品
+                this.edit = !this.edit;
+            },
+            editDel() { //删除
+                console.log('删除');
+                for (var i = 0; i < this.commoditys.length; i++) {
+                    console.log(this.commoditys[i].selects);
+                    if (this.commoditys[i].selects) {
+                        this.commoditys.splice(i, 1);
+                        this.editDel();
+                    }
+                }
+            },
+            closing(_index) { //结算
+                alert(this.total)
+            },
+            increase(_index) { //增加
+                console.log('增加');
+                this.commoditys[_index].values += 1;
+                if (this.commoditys[_index].values > 9999) {
+                    this.commoditys[_index].values = 9999;
+                }
+            },
+            reduce(_index) { //减少
+                console.log('减少');
+                this.commoditys[_index].values -= 1;
+                if (this.commoditys[_index].values < 1) {
+                    this.commoditys[_index].values = 1;
+                }
+            },
+            checkboxAlls() {
+                if (this.checkboxAll == true) {
+                    for (var i = 0; i < this.commoditys.length; i++) {
+                        this.commoditys[i].selects = true;
+                    }
+                } else {
+                    for (var i = 0; i < this.commoditys.length; i++) {
+                        this.commoditys[i].selects = false;
+                    }
+                }
+            }
         }
-
     });
-
     const my = Vue.component('my', {
         template: '#myHome' //用什么模板来渲染他
     });
@@ -847,7 +898,6 @@
                     tabNum: '2',
                     defaults: '0',
                 }],
-
             }
         },
         methods: {
@@ -913,18 +963,19 @@
             // children: [{
             //     // 当 /user/:id/profile 匹配成功，
             //     // UserProfile 会被渲染在 User 的 <router-view> 中
-            //     path: '/addresss',
-            //     component: addresss
-            // }]
+            //     path: 'cartAddress',
+            //     component: cartAddress
+            // }],
+
         }, {
             path: '/my',
             component: my
         }, {
-            path: '/addresss',
-            component: addresss
-        }, {
             path: '/cartAddress',
             component: cartAddress
+        }, {
+            path: '/addresss',
+            component: addresss
         }, {
             path: '/myOrder',
             component: myOrder
@@ -939,7 +990,8 @@
     // 你还可以传别的配置参数, 不过先这么简单着吧。
     const router = new VueRouter({
         // mode: 'history',
-        routes // （缩写）相当于 routes: routes
+        routes, // （缩写）相当于 routes: routes
+        linkActiveClass: 'linkActiveClass',
     })
 
     // 4. 创建和挂载根实例。
