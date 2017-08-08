@@ -465,10 +465,10 @@ img {
   margin: 0 10px;
 }
 
-.linkActiveClass i.iconfont {
+.linkActive i.iconfont {
   color: #09BB07;
 }
-.linkActiveClass p {
+.linkActive p {
   color: #09BB07;
 }
 
