@@ -7,7 +7,6 @@ window.onload = function (params) {
         template: '#tabbar', //用什么模板来渲染他
         data: function data() {
             return {
-
                 buttonTab: [{
                     "link": "home",
                     "title": "首页",
@@ -292,7 +291,8 @@ window.onload = function (params) {
                 tabList: [{
                     tabID: '1',
                     tabName: '公司',
-                    tabColor: 'false'
+                    tabColor: 'false',
+                    addresBox: ''
                 }]
             };
         },
@@ -318,10 +318,6 @@ window.onload = function (params) {
             return {
                 locat: '',
                 locats: '',
-                jd: '',
-                wd: '',
-                adds: '',
-                addres: '',
                 longitudes: 0, //经度
                 latitudes: 0, //维度
                 addressBox: []
@@ -329,7 +325,7 @@ window.onload = function (params) {
         },
         mounted: function mounted() {
             console.log('模板编译完成');
-            alert('模板编译完成');
+            // alert('模板编译完成')
             var self = this;
             window.navigator.geolocation.getCurrentPosition(function (position) {
                 self.longitudes = position.coords.longitude;
@@ -343,7 +339,7 @@ window.onload = function (params) {
                         if (data.status == 1) {
                             self.locat = data.locations;
                             self.locats = self.locat.split(',');
-                            self.mapS(self.locats[0], self.locats[1]);
+                            self.initMap(self.locats[0], self.locats[1]);
                         }
                     },
                     error: function error(data) {
@@ -354,20 +350,18 @@ window.onload = function (params) {
         },
         created: function created() {
             console.log('实例已经创建完成');
-            alert('实例已经创建完成');
         },
 
         methods: {
-            addhtml: function addhtml() {
-                alert(this.addressBox);
+            clickName: function clickName(n) {
+                alert(n);
             },
-            mapS: function mapS(locats1, locats2) {
-                alert(3);
-                alert(this);
+            initMap: function initMap(q1, q2) {
+                var self = this;
                 AMapUI.loadUI(['misc/PositionPicker'], function (PositionPicker) {
                     var map = new AMap.Map('containers', {
                         zoom: 17,
-                        center: [locats1, locats2],
+                        center: [q1, q2],
                         // center: [121.59996, 31.197646],
                         resizeEnable: true,
                         scrollWheel: false
@@ -378,48 +372,14 @@ window.onload = function (params) {
                     });
 
                     positionPicker.on('success', function (positionResult) {
+                        self.addressBox = [];
                         console.log(positionResult);
                         var addsLen = positionResult.regeocode.pois;
-                        alert(addsLen);
-                        alert(JSON.stringify(addsLen));
-                        alert(this);
-
-                        this.addressBox.push(JSON.stringify(addsLen));
-
-                        //   created() {
-                        // this.classMap = ['decrease', 'discount', 'special', 'invoice', 'guarantee'];
-                        // this.$http.get('/api/goods').then((res) => {
-                        //     res = res.body
-                        //     if (res.errno === ERR_OK) {
-                        //         this.goods = res.data
-                        //         this.$nextTick(() => { // 3 在这个函数中调用以防内容还未加载完就执行，获取不到元素的高度导致无法滑动
-                        //             //console.log(this)   //可以打印看看this的内容
-                        //             this._initScroll()
-                        //         })
-                        //     }
-                        // })
-                        // },
-                        // console.log(addsLen.length)
-                        // addsLen.forEach(function(data) {
-                        // alert(data.address)
-                        // console.log(data);
-                        // console.log(e.address);
-                        // addres = '<div class="weui-media-box weui-media-box_text box_text" data-id="' + data.id + '" data-name="' + data.name + '">'
-                        // addres += '<h4 class="weui-media-box__title"><i class="iconfont icon-icon1460191833045"></i>' + data.name + '</h4>'
-                        // addres += '<p class="weui-media-box__desc">' + data.address + '</p>'
-                        // addres += '</div>'
-                        // adds += addres;
-                        // });
-                        // $(".topTwo").append(adds);
-                        // address: "黄埔大道中197"
-                        // businessArea: "员村"
-                        // direction: "东北"
-                        // distance: 127
-                        // id: "B00140U04W"
-                        // location: c
-                        // name: "鸿运花园"
-                        // tel: ""
-                        // type: "商务住宅;住宅区;住宅小区"
+                        // console.log(JSON.stringify(addsLen))
+                        addsLen.forEach(function (el) {
+                            self.addressBox.push(el);
+                            // console.log(el)
+                        }, this);
                     });
                     positionPicker.on('fail', function (positionResult) {
                         console.log(positionResult);
