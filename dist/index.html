@@ -19,46 +19,57 @@
     <link rel="stylesheet" href="framework/animate.css">
     <script src="framework/vue-router.js"></script>
     <script src="javascripts\app.js"></script>
-    <style>
+    <!--引入高德地图JSAPI -->
+    <script src="//webapi.amap.com/maps?v=1.3&key=777f167eb23f4f88a60548f30ce1a96d"></script>
 
-    </style>
+    <!--引入UI组件库（1.0版本） -->
+    <script src="//webapi.amap.com/ui/1.0/main.js"></script>
+    <!--异步加载 高德地图JSAPI ，注意 callback 参数-->
+    <script src="//webapi.amap.com/maps?v=1.3&key=777f167eb23f4f88a60548f30ce1a96d&radius&plugin=AMap.ToolBar"></script>
+    <script src="http://webapi.amap.com/maps?v=1.3&key=777f167eb23f4f88a60548f30ce1a96d"></script>
+
+    <!--引入UI组件库异步版本main-async.js（1.0版本） -->
+    <script src="//webapi.amap.com/ui/1.0/main-async.js"></script>
+
+    <script type="text/javascript">
+        var AMapUIProtocol = 'https:'; //注意结尾包括冒号
+    </script>
+    <!-- https 方式引入入口文件 -->
+    <script src="https://webapi.amap.com/ui/1.0/main.js"></script>
 </head>
 
 
-<div id="container">
-    <tabbar></tabbar>
-</div>
-
-
 <body>
-
+    <div id="container">
+        <tabbar></tabbar>
+    </div>
 </body>
 
 <!-- 底部的组件 -->
 <template id="tabbar">
-<div class="page tabbar js_show ">
-    <div class="page__bd" style="height: 100%;">
-        <div class="weui-tab">
-            <div class="weui-tab__panel">
-                <!-- 路由匹配到的组件将渲染在这里 -->
-                <router-view></router-view>
-                <div class="weui-tabbar">
-                    <router-link v-for="(tabs,index) in buttonTab" active-class="linkActive" :to="tabs.link" class="weui-tabbar__item">
-                        <div>
-                        <span style="display: inline-block;position: relative;" >
-                        <i :class=tabs.icon class="iconfont iconfonts"></i>
-                        <p class="weui-tabbar__label"> {{tabs.title}}</p>
-                        <span v-if=index==2 class="weui-badge" style="position: absolute;top: -2px;right: -2px;">{{tabs.num}}</span>
-                        <span v-if=index==3 class="weui-badge weui-badge_dot" style="position: absolute;top: 0;right: -2px;"></span>
-                        </span>
-                       </div>
-                    </router-link>
+    <div class="page tabbar js_show ">
+        <div class="page__bd" style="height: 100%;">
+            <div class="weui-tab">
+                <div class="weui-tab__panel">
+                    <!-- 路由匹配到的组件将渲染在这里 -->
+                    <router-view></router-view>
+                    <div class="weui-tabbar">
+                        <!-- 激活的样式active-class="linkActive" -->
+                        <router-link v-for="(tabs,index) in buttonTab" active-class="linkActive" :to="tabs.link" class="weui-tabbar__item">
+                            <div>
+                            <span style="display: inline-block;position: relative;" >
+                            <i :class=tabs.icon class="iconfont iconfonts"></i>
+                            <p class="weui-tabbar__label"> {{tabs.title}}</p>
+                            <span v-if=index==2 class="weui-badge" style="position: absolute;top: -2px;right: -2px;">{{tabs.num}}</span>
+                            <span v-if=index==3 class="weui-badge weui-badge_dot" style="position: absolute;top: 0;right: -2px;"></span>
+                            </span>
+                        </div>
+                        </router-link>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-
 </template>
 <!-- tabs.green?weui-bar__item_on:'' -->
 
@@ -234,14 +245,15 @@
                 <div class="weui-tab__panel box" :style="pbtm" >  
                     <!-- 放内容的 -->
                     <div class="weui-flex">
-                  
-                            <div class="boxL listTab">
-                                <ul class="scrollsLeft">
-                                    <li v-for="(item,index) in titleList" :class="{'active':item.color}"><a @click="goAnchor('#anchor-'+index,index)" v-cloak>{{item.title}}</a></li>
-                                </ul>
-                            </div>
-                        <div class="weui-flex__item">
-                            <div class="scrollsRight" ref="foodsWrapper">
+                        <!-- 左边菜单 -->
+                        <div class="boxL listTab">
+                            <ul class="scrollsLeft menu-wrapper" ref="menu">
+                                <li v-for="(item,index) in titleList" :class="{'active':item.color}"><a @click="goAnchor('#anchor-'+index,index)" v-cloak>{{item.title}}</a></li>
+                            </ul>
+                        </div>
+                        <!-- 右边商品 -->
+                        <div class="weui-flex__item "> 
+                            <div class="scrollsRight foods-wrapper" ref="foodsWrapper">
                                 <div class="boxR">
                                     <div class="scrollRight list-item food-list-hook" v-bind:key="item" :id="'anchor-'+index" v-for="(item,index) in titleList">
                                         <a class="weui-cell weui-cell_access" href="javascript:;">
@@ -453,7 +465,7 @@
 
 <!-- 地址 -->
 <template id="cartAddress">
-     <div class="page navbar js_show">
+     <div class="page navbar js_show zindex" >
         <div class="page__bd" style="height: 100%;">
             <div class="weui-tab">
                 <div class="weui-navbar">
@@ -615,7 +627,9 @@
             <div class="weui-cell ">
                 <div class="weui-cell__hd"><label class="weui-label displayInline">小区/大厦/学校：</label></div>
                 <div class="weui-cell__bd ">
-                    <input class="weui-input" id="addressOne" type="text" maxlength="11" placeholder="选择 ">
+                    <router-link to="/maps">
+                       <input class="weui-input" id="addressOne" type="text" maxlength="11" placeholder="选择" readonly>
+                    </router-link>
                 </div>
             </div>
             <div class="weui-cell ">
@@ -653,362 +667,34 @@
     </div>
   </div>
 </template>
-<script>
-    Vue.component('tabbar', {
-        template: '#tabbar', //用什么模板来渲染他
-        data() {
-            return {
 
-                buttonTab: [{
-                    "link": "home",
-                    "title": "首页",
-                    "icon": "icon-shouye",
-                    "green": true,
-                    "num": "1"
-                }, {
-                    "link": "fenlei",
-                    "title": "分类",
-                    "icon": "icon-fenlei",
-                    "green": false,
-                    "num": "1"
-                }, {
-                    "link": "gouwuche",
-                    "title": "购物车",
-                    "icon": "icon-icon",
-                    "green": false,
-                    "num": "1"
-                }, {
-                    "link": "my",
-                    "title": "我",
-                    "icon": "icon-wode3",
-                    "green": false,
-                    "num": "1"
-                }]
-            }
-        },
-        methods: {
-
-        }
-    });
-    const home = Vue.component('home', {
-        template: '#home' //用什么模板来渲染他
-    });
-    const fenlei = Vue.component('fenlei', {
-        template: '#list', //用什么模板来渲染他
-        data() {
-            return {
-                goods: [],
-                listHeight: [],
-                scrollY: 0,
-                offsetH: '',
-                pbtm: {
-                    'padding-bottom': '0',
-                    'overflow': 'hidden'
-                },
-                overhide: 'overflow: hidden',
-                overf: {
-                    'overflow-y': 'scroll'
-                },
-                titleList: [{
-                    title: '肉禽蛋品',
-                    color: true
-                }, {
-                    title: '冷冻食品',
-                    color: false
-                }, {
-                    title: '酒水饮料',
-                    color: false
-                }, {
-                    title: '肉禽',
-                    color: false
-                }, {
-                    title: '蛋品',
-                    color: false
-                }, {
-                    title: '禽',
-                    color: false
-                }, {
-                    title: '蛋',
-                    color: false
-                }, {
-                    title: '品',
-                    color: false
-                }, {
-                    title: '肉',
-                    color: false
-                }]
-            }
-        },
-        mounted() {
-            this.offsetH = document.body.offsetHeight
-            var offsetH = this.offsetH - 95;
-            console.log(offsetH)
-            $('.listTab').css('height', offsetH);
-            $('.boxR').css('height', offsetH);
-            $('.box').css('height', offsetH);
-            $('.weui-tab__panel').css('height', offsetH);
-        },
-
-        methods: {
-            goAnchor(selector, i) {
-                var anchor = this.$el.querySelector(selector);
-                // document.body.scrollTop = anchor.offsetTop;
-                console.log(anchor.offsetTop)
-                document.querySelector('.boxR').scrollTop = anchor.offsetTop;
-                for (var e = 0; e < this.titleList.length; e++) {
-                    this.titleList[e].color = false;
-                    this.titleList[i].color = true;
-                }
-            },
-        }
-    });
-    const gouwuche = Vue.component('gouwuche', {
-        template: '#gouwuche', //用什么模板来渲染他
-        data() {
-            return {
-                edit: true, //显示按钮
-                disableds: false, //禁止结算
-                checkboxAll: false, //全部选择结算
-                offsetH: '',
-                commoditys: [{
-                    'goodsId': '0031655',
-                    'selects': false,
-                    'commodityImg': 'images/111.jpg',
-                    'title': '名字能多长我不知道你们震他妈的凡人啊傻逼们',
-                    'price': '9999.00',
-                    'values': 1
-                }, {
-                    'goodsId': '0031665',
-                    'selects': false,
-                    'commodityImg': 'images/111.jpg',
-                    'title': '真陶渊明的待不下去了一群傻逼好凡人',
-                    'price': '88.00',
-                    'values': 1
-                }, {
-                    'goodsId': '0031675',
-                    'selects': false,
-                    'commodityImg': 'images/111.jpg',
-                    'title': '真陶渊去了一群傻逼好凡人',
-                    'price': '882.00',
-                    'values': 2
-                }, {
-                    'goodsId': '0031685',
-                    'selects': false,
-                    'commodityImg': 'images/111.jpg',
-                    'title': '一群傻逼好凡人',
-                    'price': '881.01',
-                    'values': 1
-                }]
-            }
-        },
-        mounted() {
-            this.offsetH = document.body.offsetHeight
-            var offsetH = this.offsetH - 95;
-            console.log(this.$roete)
-            $('.weui-tab__panel').css('height', offsetH);
-        },
-        computed: {
-            listLength() {
-                return this.commoditys.length;
-            },
-            total() {
-                let ices = 0;
-                for (let i in this.commoditys) {
-                    if (this.commoditys[i].selects) {
-                        ices += Number(this.commoditys[i].price) * Number(this.commoditys[i].values)
-                        console.log(typeof Number(this.commoditys[i].price))
-                    }
-                }
-                if (ices == 0) { //按钮禁止
-                    this.disableds = true;
-                } else {
-                    this.disableds = false;
-                }
-                return ices;
-            },
-
-        },
-        methods: {
-            editSwitch(edit) { //选择商品
-                this.edit = !this.edit;
-            },
-            editDel() { //删除
-                console.log('删除');
-                for (var i = 0; i < this.commoditys.length; i++) {
-                    console.log(this.commoditys[i].selects);
-                    if (this.commoditys[i].selects) {
-                        this.commoditys.splice(i, 1);
-                        this.editDel();
-                    }
-                }
-            },
-            closing(_index) { //结算
-                alert(this.total)
-            },
-            increase(_index) { //增加
-                console.log('增加');
-                this.commoditys[_index].values += 1;
-                if (this.commoditys[_index].values > 9999) {
-                    this.commoditys[_index].values = 9999;
-                }
-            },
-            reduce(_index) { //减少
-                console.log('减少');
-                this.commoditys[_index].values -= 1;
-                if (this.commoditys[_index].values < 1) {
-                    this.commoditys[_index].values = 1;
-                }
-            },
-            checkboxAlls() {
-                if (this.checkboxAll == true) {
-                    for (var i = 0; i < this.commoditys.length; i++) {
-                        this.commoditys[i].selects = true;
-                    }
-                } else {
-                    for (var i = 0; i < this.commoditys.length; i++) {
-                        this.commoditys[i].selects = false;
-                    }
-                }
-            }
-        }
-    });
-    const my = Vue.component('my', {
-        template: '#myHome' //用什么模板来渲染他
-    });
-    const myOrder = Vue.component('myOrder', {
-        template: '#myOrder', //用什么模板来渲染他
-    });
-    const cartAddress = Vue.component('cartAddress', {
-        template: '#cartAddress', //用什么模板来渲染他
-        data() {
-            return {
-                hs: "background:#ccc",
-                addressList: [{
-                    addressId: '01', //地址id
-                    name: '名字',
-                    phone: '13666666666',
-                    address: '广东省广州市萝岗区天慧路3号广州互联网产业园C601深圳市商沃科技有限公司',
-                    tabNum: '1', //标签 1 公司 2 家 0 学校
-                    defaults: '1', // 默认地址 1 不是默认0
-                }, {
-                    addressId: '02',
-                    name: '名字2',
-                    phone: '136777777776',
-                    address: '广东省广州市萝岗区天慧路3号广州互联网产业园C601深圳市商沃科技有限公司',
-                    tabNum: '2',
-                    defaults: '0',
-                }],
-            }
-        },
-        methods: {
-            alert(g) {
-                alert(123)
-            }
-        }
-    });
-    const addresss = Vue.component('addresss', {
-        template: '#addresss', //用什么模板来渲染他
-        data() {
-            return {
-                addressList: [],
-                tabList: [{
-                    tabID: '1',
-                    tabName: '公司',
-                    tabColor: 'false'
-                }]
-            }
-        },
-        mounted() {
-            document.addEventListener('click', function(params) {
-                var abox = document.querySelectorAll(".acs");
-                for (var i = 0; i < abox.length; i++) {
-                    abox[i].onclick = function() {
-                        for (var i = 0; i < abox.length; i++) {
-                            abox[i].classList.remove('act')
-                        }
-                        this.classList.add("act");
-                    }
-                }
-            })
-        },
-        methods: {
-
-        }
-    });
-    // 0. 如果使用模块化机制编程，導入Vue和VueRouter，要调用 Vue.use(VueRouter)
-
-    // 1. 定义（路由）组件。
-    // 可以从其他文件 import 进来
-    // const Foo = {
-    //     template: '<div>foo</div>'
-    // }
-    // const Bar = {
-    //     template: '<div>bar</div>'
-    // }
-
-    // 2. 定义路由
-    // 每个路由应该映射一个组件。 其中"component" 可以是
-    // 通过 Vue.extend() 创建的组件构造器，
-    // 或者，只是一个组件配置对象。
-    // 我们晚点再讨论嵌套路由。
-    const routes = [{
-            path: '/home',
-            component: home
-        }, {
-            path: '/fenlei',
-            component: fenlei
-        }, {
-            path: '/gouwuche', //{{ $route.params.id }} 展示接收的ID
-            component: gouwuche,
-            // children: [{
-            //     // 当 /user/:id/profile 匹配成功，
-            //     // UserProfile 会被渲染在 User 的 <router-view> 中
-            //     path: 'cartAddress',
-            //     component: cartAddress
-            // }],
-
-        }, {
-            path: '/my',
-            component: my
-        }, {
-            path: '/cartAddress',
-            component: cartAddress
-        }, {
-            path: '/addresss',
-            component: addresss
-        }, {
-            path: '/myOrder',
-            component: myOrder
-        }, {
-            path: '/', //首页固定
-            redirect: '/home'
-        },
-        //  {path: '*', //404 redirect: '/home' }
-    ]
-
-    // 3. 创建 router 实例，然后传 `routes` 配置
-    // 你还可以传别的配置参数, 不过先这么简单着吧。
-    const router = new VueRouter({
-        // mode: 'history',
-        routes, // （缩写）相当于 routes: routes
-        linkActiveClass: 'linkActive',
-    })
-
-    // 4. 创建和挂载根实例。
-    // 记得要通过 router 配置参数注入路由，
-    // 从而让整个应用都有路由功能
-    const app = new Vue({
-        el: '#container',
-        router,
-        data() {
-            return {
-
-            }
-        },
-
-    })
-
-    // 现在，应用已经启动了！
-</script>
+<!-- 地图定位 -->
+<template id="maps">
+    <div class="maps">
+        <div id="containers" class="map" tabindex="0"></div>
+            <div class="weui-panel weui-panel_access">
+                <!-- <div class="weui-panel__hd topOne"></div> -->
+                <div class="weui-panel__bd topTwo">
+                    <div class="weui-media-box weui-media-box_text" v-show="addressBox.length==0" @click="addhtml" >
+                        <h4 class="weui-media-box__title">定位失败</h4>
+                        <p class="weui-media-box__desc">请打开GPS重试！</p>
+                    </div>
+                    
+                    <div class="weui-media-box weui-media-box_text box_text" v-show="addressBox.length!=0" v-for="item in addressBox" data-id="' + data.id + '" data-name="' + data.name + '">
+                    <h4 class="weui-media-box__title">
+                        <i class="iconfont icon-icon1460191833045"></i>{{item.address}}</h4>
+                    <p class="weui-media-box__desc">' + data.address + '</p>
+                </div>
+                </div>
+               
+                <!-- <div class="weui-panel__ft">
+                        <a href="javascript:void(0);" class="weui-cell weui-cell_access weui-cell_link">
+                            <div class="weui-cell__bd">查看更多</div>
+                            <span class="weui-cell__ft"></span>
+                        </a>
+                    </div> -->
+            </div>
+        </div>
+</template>
 
 </html>
