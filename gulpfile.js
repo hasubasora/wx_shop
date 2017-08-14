@@ -13,6 +13,7 @@ var gulp = require('gulp'),
     jshint = require('gulp-jshint'),
     autoprefixer = require('gulp-autoprefixer'),
     babel = require('gulp-babel'),
+    pug = require('gulp-pug'),
     fileinclude = require('gulp-file-include'); //分离html
 
 
@@ -26,9 +27,19 @@ gulp.task('clean', function(callback) {
 });
 
 gulp.task('build', function(callback) {
-    return runSequence(['compass', 'minifyjs', 'staticFiles'], callback);
+    return runSequence(['compass', 'minifyjs', 'views', 'staticFiles'], callback);
 });
 
+gulp.task('views', function buildHTML() {
+    var YOUR_LOCALS = {};
+    return gulp.src('./src/pug/*.pug')
+        .pipe(pug({
+            // client: true,//编译成js
+            locals: YOUR_LOCALS, //编译html
+            pretty: true //不压缩代码
+        }))
+        .pipe(gulp.dest('./dist/pug/'))
+});
 
 gulp.task('compass', function() {
     return gulp.src('./src/**/*.scss')
@@ -119,8 +130,8 @@ gulp.task('staticFiles', function() {
             './src/**/*.html',
             './src/images*/**/*.*',
             './src/javascripts*/**/*.js',
-            './src/stylesheets*/**/*.css',
-             './src/framework*/**/*.*'
+            // './src/stylesheets*/**/*.css',
+            './src/framework*/**/*.*'
         ])
         .pipe(gulp.dest('./dist/'));
 })
@@ -139,6 +150,7 @@ gulp.task('reload', function() {
 gulp.task('watch', function() {
     return gulp.watch([
         './src/**/*.html',
+        './src/**/*.pug',
         './src/**/*.scss',
         './src/**/*.js'
     ], function() {
