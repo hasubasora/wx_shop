@@ -234,6 +234,69 @@ window.onload = function(params) {
     });
     const myOrder = Vue.component('myOrder', {
         template: '#myOrder', //用什么模板来渲染他
+        data() {
+            return {
+                goodsList: [{
+                    'nextTime': '2017年7月24日12:08:58',
+                    'orderStatus': 3, //0 未付款 1 已付款 2 已取消 3 已完成
+                    'totalPrices': 0,
+                    list: [{
+                        'src': 'framework/lg.jpg',
+                        'goodsId': '0031665',
+                        'commodityImg': 'images/111.jpg',
+                        'title': '由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道',
+                        'price': '20', //金额
+                        'values': 2, //数量
+
+                    }, {
+                        'src': 'framework/lg.jpg',
+                        'goodsId': '0031665',
+                        'commodityImg': 'images/111.jpg',
+                        'title': '由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道',
+                        'price': '20.10', //金额
+                        'values': 4, //数量
+
+                    }]
+                }, {
+                    'nextTime': '2017年7月24日12:08:58',
+                    'orderStatus': 1, //0 未付款 1 已付款 2 已取消 3 已完成
+                    'totalPrices': 1000,
+                    list: [{
+                        'src': 'framework/lg.jpg',
+                        'goodsId': '0031665',
+                        'commodityImg': 'images/111.jpg',
+                        'title': '由各种物质组成的巨型球状天体，',
+                        'price': '220', //金额
+                        'values': 1, //数量
+
+                    }, {
+                        'src': 'framework/lg.jpg',
+                        'goodsId': '0031665',
+                        'commodityImg': 'images/111.jpg',
+                        'title': '叫做星球。星球有一定的形状，有自己的运行轨道',
+                        'price': '20.30', //金额
+                        'values': 4, //数量
+
+                    }, ]
+                }, {
+                    'nextTime': '2017年7月24日13:08:58',
+                    'orderStatus': 2, //0 未付款 1 已付款 2 已取消 3 已完成
+                    'totalPrices': 10100,
+                    list: [{
+                        'src': 'framework/lg.jpg',
+                        'goodsId': '0031665',
+                        'commodityImg': 'images/111.jpg',
+                        'title': '由各种物质组成的巨型球状天体1，',
+                        'price': '220', //金额
+                        'values': 1, //数量
+
+                    }, ]
+                }],
+            }
+        },
+        computed: {
+            // 计算的地方
+        }
     });
     const cartAddress = Vue.component('cartAddress', {
         template: '#cartAddress', //用什么模板来渲染他

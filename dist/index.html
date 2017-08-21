@@ -357,36 +357,77 @@
                     <!--  -->
 
                     <!-- 商品区域 -->
-                    <div class="weui-cells">
+                    <div class="weui-cells" v-for="items in goodsList">
+                
                         <div class="weui-cell">
                             <div class="weui-cell__bd">
-                                <p class="font">下单时间：2017年7月24日12:08:58</p>
+                                <p class="font">下单时间:{{items.nextTime}}</p>
                             </div>
-                            <div class="weui-cell__ft font"><a href="javascript:void(0)">取消订单</a></div>
+                            <div class="weui-cell__ft font">
+                                <a v-show="items.orderStatus==0" href="javascript:void(0)">取消订单</a>
+                                <a v-show="items.orderStatus==1" href="javascript:void(0)">已支付</a>
+                                <a v-show="items.orderStatus==2" href="javascript:void(0)">已取消</a>
+                                <a v-show="items.orderStatus==3" href="javascript:void(0)">已完成</a>
+                            </div>  
                         </div>
-                        <div class="weui-cell weui-cell_swiped">
+                        <div class="weui-cell weui-cell_swiped" v-for="goodsList in items.list">
+                           
                             <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
                                 <div class="weui-media-box__hd">
-                                    <img class="weui-media-box__thumb" src="framework/lg.jpg"
+                                    <img class="weui-media-box__thumb" :src="goodsList.src"
                                         alt="">
                                 </div>
                                 <div class="weui-media-box__bd">
-                                    <h4 class="weui-media-box__desc black">由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道</h4>
-                                    <p class="weui-media-box__desc">299999.00</p>
+                                    <h4 class="weui-media-box__desc black">{{goodsList.title}}</h4>
+                                    <p class="weui-media-box__desc">￥{{goodsList.price}}</p>
                                 </div>
-                                <div class="weui-media-box__ft">x2</div>
+                                <div class="weui-media-box__ft">x{{goodsList.values}}</div>
                             </a>
                         </div>
                         <div class="weui-cell">
                             <div class="weui-cell__bd">
-                                <p class="font">应付金额￥13232.88</p>
+                                  <input type="hidden" :value="goodsList.goodsId"> 
+                                <p class="font">应付金额￥ {{items.totalPrices}}</p>
                             </div>
                             <div class="weui-cell__ft">
-                                <a href="javascript:;" class="weui-btn weui-btn_mini weui-btn_warn" style="display: flex;">付款</a>
+                                <a href="javascript:;"  v-show="items.orderStatus==0" class="weui-btn weui-btn_mini weui-btn_warn" style="display: flex;">付款</a>
+                                <a href="javascript:;"  v-show="items.orderStatus==1" class="weui-btn weui-btn_mini weui-btn_default" style="display: flex; margin-top:0">确认收货</a>
+                                <a href="javascript:;"  v-show="items.orderStatus==3" class="weui-btn weui-btn_mini weui-btn_default" style="display: flex; margin-top:0">申请售后</a>
                             </div>
                         </div>
                     </div>
                     <!-- 商品区域 -->
+  <!-- 商品区域 -->
+  <div class="weui-cells">
+    <div class="weui-cell">
+        <div class="weui-cell__bd">
+            <p class="font">下单时间：2017年7月24日12:08:58</p>
+        </div>
+        <div class="weui-cell__ft font"><a href="javascript:void(0)">取消订单</a></div>
+    </div>
+    <div class="weui-cell weui-cell_swiped">
+        <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
+            <div class="weui-media-box__hd">
+                <img class="weui-media-box__thumb" src="framework/lg.jpg"
+                    alt="">
+            </div>
+            <div class="weui-media-box__bd">
+                <h4 class="weui-media-box__desc black">由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道</h4>
+                <p class="weui-media-box__desc">299999.00</p>
+            </div>
+            <div class="weui-media-box__ft">x2</div>
+        </a>
+    </div>
+    <div class="weui-cell">
+        <div class="weui-cell__bd">
+            <p class="font">应付金额￥13232.88</p>
+        </div>
+        <div class="weui-cell__ft">
+            <a href="javascript:;" class="weui-btn weui-btn_mini weui-btn_warn" style="display: flex;">付款</a>
+        </div>
+    </div>
+</div>
+<!-- 商品区域 -->
 
                     <!-- 商品区域 -->
                     <div class="weui-cells">
