@@ -4,25 +4,25 @@ window.onload = function(params) {
         data() {
             return {
                 buttonTab: [{
-                    "link": "home",
+                    "link": "/home",
                     "title": "首页",
                     "icon": "icon-shouye",
                     "green": true,
                     "num": "1"
                 }, {
-                    "link": "fenlei",
+                    "link": "/fenlei",
                     "title": "分类",
                     "icon": "icon-fenlei",
                     "green": false,
                     "num": "1"
                 }, {
-                    "link": "gouwuche",
+                    "link": "/gouwuche",
                     "title": "购物车",
                     "icon": "icon-icon",
                     "green": false,
                     "num": "1"
                 }, {
-                    "link": "my",
+                    "link": "/my",
                     "title": "我",
                     "icon": "icon-wode3",
                     "green": false,
@@ -236,62 +236,7 @@ window.onload = function(params) {
         template: '#myOrder', //用什么模板来渲染他
         data() {
             return {
-                goodsList: [{
-                    'nextTime': '2017年7月24日12:08:58',
-                    'orderStatus': 3, //0 未付款 1 已付款 2 已取消 3 已完成
-                    'totalPrices': 0,
-                    list: [{
-                        'src': 'framework/lg.jpg',
-                        'goodsId': '0031665',
-                        'commodityImg': 'images/111.jpg',
-                        'title': '由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道',
-                        'price': '20', //金额
-                        'values': 2, //数量
 
-                    }, {
-                        'src': 'framework/lg.jpg',
-                        'goodsId': '0031665',
-                        'commodityImg': 'images/111.jpg',
-                        'title': '由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道',
-                        'price': '20.10', //金额
-                        'values': 4, //数量
-
-                    }]
-                }, {
-                    'nextTime': '2017年7月24日12:08:58',
-                    'orderStatus': 1, //0 未付款 1 已付款 2 已取消 3 已完成
-                    'totalPrices': 1000,
-                    list: [{
-                        'src': 'framework/lg.jpg',
-                        'goodsId': '0031665',
-                        'commodityImg': 'images/111.jpg',
-                        'title': '由各种物质组成的巨型球状天体，',
-                        'price': '220', //金额
-                        'values': 1, //数量
-
-                    }, {
-                        'src': 'framework/lg.jpg',
-                        'goodsId': '0031665',
-                        'commodityImg': 'images/111.jpg',
-                        'title': '叫做星球。星球有一定的形状，有自己的运行轨道',
-                        'price': '20.30', //金额
-                        'values': 4, //数量
-
-                    }, ]
-                }, {
-                    'nextTime': '2017年7月24日13:08:58',
-                    'orderStatus': 2, //0 未付款 1 已付款 2 已取消 3 已完成
-                    'totalPrices': 10100,
-                    list: [{
-                        'src': 'framework/lg.jpg',
-                        'goodsId': '0031665',
-                        'commodityImg': 'images/111.jpg',
-                        'title': '由各种物质组成的巨型球状天体1，',
-                        'price': '220', //金额
-                        'values': 1, //数量
-
-                    }, ]
-                }],
             }
         },
         computed: {
@@ -449,9 +394,172 @@ window.onload = function(params) {
         },
     })
 
+    const orderTab1 = Vue.component('orderTab1', {
+        template: '#orderTab1', //用什么模板来渲染他
+        data() {
+            return {
+                goodsList: [{
+                    'nextTime': '2017年7月24日12:08:58',
+                    'orderStatus': 3, //0 未付款 1 已付款 2 已取消 3 已完成
+                    'totalPrices': 0,
+                    list: [{
+                        'src': 'framework/lg.jpg',
+                        'goodsId': '0031665',
+                        'commodityImg': 'images/111.jpg',
+                        'title': '由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道',
+                        'price': '20', //金额
+                        'values': 2, //数量
 
+                    }, {
+                        'src': 'framework/lg.jpg',
+                        'goodsId': '0031665',
+                        'commodityImg': 'images/111.jpg',
+                        'title': '由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道',
+                        'price': '20.10', //金额
+                        'values': 4, //数量
 
+                    }]
+                }, {
+                    'nextTime': '2017年7月24日12:08:58',
+                    'orderStatus': 1, //0 未付款 1 已付款 2 已取消 3 已完成
+                    'totalPrices': 1000,
+                    list: [{
+                        'src': 'framework/lg.jpg',
+                        'goodsId': '0031665',
+                        'commodityImg': 'images/111.jpg',
+                        'title': '由各种物质组成的巨型球状天体，',
+                        'price': '220', //金额
+                        'values': 1, //数量
 
+                    }, {
+                        'src': 'framework/lg.jpg',
+                        'goodsId': '0031665',
+                        'commodityImg': 'images/111.jpg',
+                        'title': '叫做星球。星球有一定的形状，有自己的运行轨道',
+                        'price': '20.30', //金额
+                        'values': 4, //数量
+
+                    }, ]
+                }, {
+                    'nextTime': '2017年7月24日13:08:58',
+                    'orderStatus': 2, //0 未付款 1 已付款 2 已取消 3 已完成
+                    'totalPrices': 10100,
+                    list: [{
+                        'src': 'framework/lg.jpg',
+                        'goodsId': '0031665',
+                        'commodityImg': 'images/111.jpg',
+                        'title': '由各种物质组成的巨型球状天体1，',
+                        'price': '220', //金额
+                        'values': 1, //数量
+
+                    }, ]
+                }],
+            }
+        },
+    })
+    const orderTab2 = Vue.component('orderTab2', {
+        template: '#orderTab2', //用什么模板来渲染他
+        data() {
+            return {
+                goodsList: [{
+                    'nextTime': '2017年7月24日12:08:58',
+                    'orderStatus': 0, //0 未付款 1 已付款 2 已取消 3 已完成
+                    'totalPrices': 0,
+                    list: [{
+                        'src': 'framework/lg.jpg',
+                        'goodsId': '0031665',
+                        'commodityImg': 'images/111.jpg',
+                        'title': '由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道',
+                        'price': '20', //金额
+                        'values': 2, //数量
+
+                    }, {
+                        'src': 'framework/lg.jpg',
+                        'goodsId': '0031665',
+                        'commodityImg': 'images/111.jpg',
+                        'title': '由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道',
+                        'price': '20.10', //金额
+                        'values': 4, //数量
+
+                    }]
+                }]
+            }
+        },
+    })
+    const orderTab3 = Vue.component('orderTab3', {
+        template: '#orderTab3', //用什么模板来渲染他
+        data() {
+            return {
+                goodsList: [{
+                    'nextTime': '2017年7月24日12:08:58',
+                    'orderStatus': 1, //0 未付款 1 已付款 2 已取消 3 已完成
+                    'totalPrices': 0,
+                    list: [{
+                        'src': 'framework/lg.jpg',
+                        'goodsId': '0031665',
+                        'commodityImg': 'images/111.jpg',
+                        'title': '由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道',
+                        'price': '20', //金额
+                        'values': 2, //数量
+
+                    }, {
+                        'src': 'framework/lg.jpg',
+                        'goodsId': '0031665',
+                        'commodityImg': 'images/111.jpg',
+                        'title': '由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道',
+                        'price': '20.10', //金额
+                        'values': 4, //数量
+
+                    }]
+                }]
+            }
+        },
+    })
+    const orderTab4 = Vue.component('orderTab4', {
+        template: '#orderTab4', //用什么模板来渲染他
+        data() {
+            return {
+                goodsList: [{
+                    'nextTime': '2017年7月24日12:08:58',
+                    'orderStatus': 2, //0 未付款 1 已付款 2 已取消 3 已完成
+                    'totalPrices': 9999,
+                    list: [{
+                        'src': 'framework/lg.jpg',
+                        'goodsId': '0031665',
+                        'commodityImg': 'images/111.jpg',
+                        'title': '由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道',
+                        'price': '20', //金额
+                        'values': 2, //数量
+
+                    }, {
+                        'src': 'framework/lg.jpg',
+                        'goodsId': '0031665',
+                        'commodityImg': 'images/111.jpg',
+                        'title': '由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道',
+                        'price': '20.10', //金额
+                        'values': 8, //数量
+
+                    }]
+                }]
+            }
+        },
+    })
+    const orderDet = Vue.component('orderDet', {
+        template: '#orderDet', //用什么模板来渲染他
+        data() {
+            return {
+
+            }
+        },
+    })
+    const wxpay = Vue.component('wxpay', {
+        template: '#wxpay', //用什么模板来渲染他
+        data() {
+            return {
+
+            }
+        },
+    })
 
     // 0. 如果使用模块化机制编程，導入Vue和VueRouter，要调用 Vue.use(VueRouter)
 
@@ -505,7 +613,27 @@ window.onload = function(params) {
             component: maps
         }, {
             path: '/myOrder',
-            component: myOrder
+            component: myOrder,
+            redirect: '/myOrder/orderTab1',
+            children: [{
+                path: 'orderTab1',
+                component: orderTab1
+            }, {
+                path: 'orderTab2',
+                component: orderTab2
+            }, {
+                path: 'orderTab3',
+                component: orderTab3
+            }, {
+                path: 'orderTab4',
+                component: orderTab4
+            }, ]
+        }, {
+            path: '/orderDet/:id',
+            component: orderDet
+        }, {
+            path: '/wxpay/:id',
+            component: wxpay
         }, {
             path: '/', //首页固定
             redirect: '/home'
@@ -516,7 +644,7 @@ window.onload = function(params) {
     // 3. 创建 router 实例，然后传 `routes` 配置
     // 你还可以传别的配置参数, 不过先这么简单着吧。
     const router = new VueRouter({
-        // mode: 'history',
+        mode: 'history',
         routes, // （缩写）相当于 routes: routes
         linkActiveClass: 'linkActive', //激活后的连接颜色Class
         scrollBehavior(to, from, savedPosition) {

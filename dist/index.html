@@ -290,22 +290,22 @@
              </a>
             </router-link>
             <div class="weui-flex weui-cell ">
-                <div class="weui-flex__item weui-tabbar__item">
+                <router-link to="/myOrder/orderTab2" class="weui-flex__item weui-tabbar__item">
                     <i class="iconfont icon-qianbao iconfonts"></i>
                     <p class="weui-tabbar__label">待付款</p>
-                </div>
-                <div class="weui-flex__item weui-tabbar__item">
+                </router-link> 
+                <router-link to="/myOrder/orderTab3"class="weui-flex__item weui-tabbar__item">
                     <i class="iconfont icon-huoxiang iconfonts"></i>
                     <p class="weui-tabbar__label">待收货</p>
-                </div>
+                </router-link> 
                 <!-- <div class="weui-flex__item weui-tabbar__item">
                     <i class="iconfont icon-shouye "></i>
                     <p class="weui-tabbar__label">评价</p>
                 </div> -->
-                <div class="weui-flex__item weui-tabbar__item">
+                <router-link to="/myOrder/orderTab4"class="weui-flex__item weui-tabbar__item">
                     <i class="iconfont icon-shouhou iconfonts"></i>
                     <p class="weui-tabbar__label">退款/售后</p>
-                </div>
+                </router-link> 
             </div>
         </div>
     </div>
@@ -335,152 +335,204 @@
                 </div>
                 <div class="weui-navbar" style="top: 50px;">
                     <div class="weui-navbar__item weui-bar__item_on">
-                        全部
+                       <router-link to="/myOrder/orderTab1">全部</router-link>
                     </div>
                     <div class="weui-navbar__item">
-                        未付款
+                       <router-link to="/myOrder/orderTab2">未付款</router-link>
                     </div>
                     <div class="weui-navbar__item">
-                        待收货
+                           <router-link to="/myOrder/orderTab3">待收货</router-link>
                     </div>
                     <div class="weui-navbar__item">
-                        已取消
+                           <router-link to="/myOrder/orderTab4">已取消</router-link>
                     </div>
                 </div>
 
                 <!-- 顶部 -->
-
+          
                 <!-- 中间部分 -->
                 <div class="weui-tab__panel paddingBottom" style="padding-top: 75px;">
-
-
-                    <!--  -->
-
-                    <!-- 商品区域 -->
-                    <div class="weui-cells" v-for="items in goodsList">
-                
-                        <div class="weui-cell">
-                            <div class="weui-cell__bd">
-                                <p class="font">下单时间:{{items.nextTime}}</p>
-                            </div>
-                            <div class="weui-cell__ft font">
-                                <a v-show="items.orderStatus==0" href="javascript:void(0)">取消订单</a>
-                                <a v-show="items.orderStatus==1" href="javascript:void(0)">已支付</a>
-                                <a v-show="items.orderStatus==2" href="javascript:void(0)">已取消</a>
-                                <a v-show="items.orderStatus==3" href="javascript:void(0)">已完成</a>
-                            </div>  
-                        </div>
-                        <div class="weui-cell weui-cell_swiped" v-for="goodsList in items.list">
-                           
-                            <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
-                                <div class="weui-media-box__hd">
-                                    <img class="weui-media-box__thumb" :src="goodsList.src"
-                                        alt="">
-                                </div>
-                                <div class="weui-media-box__bd">
-                                    <h4 class="weui-media-box__desc black">{{goodsList.title}}</h4>
-                                    <p class="weui-media-box__desc">￥{{goodsList.price}}</p>
-                                </div>
-                                <div class="weui-media-box__ft">x{{goodsList.values}}</div>
-                            </a>
-                        </div>
-                        <div class="weui-cell">
-                            <div class="weui-cell__bd">
-                                  <input type="hidden" :value="goodsList.goodsId"> 
-                                <p class="font">应付金额￥ {{items.totalPrices}}</p>
-                            </div>
-                            <div class="weui-cell__ft">
-                                <a href="javascript:;"  v-show="items.orderStatus==0" class="weui-btn weui-btn_mini weui-btn_warn" style="display: flex;">付款</a>
-                                <a href="javascript:;"  v-show="items.orderStatus==1" class="weui-btn weui-btn_mini weui-btn_default" style="display: flex; margin-top:0">确认收货</a>
-                                <a href="javascript:;"  v-show="items.orderStatus==3" class="weui-btn weui-btn_mini weui-btn_default" style="display: flex; margin-top:0">申请售后</a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- 商品区域 -->
-  <!-- 商品区域 -->
-  <div class="weui-cells">
-    <div class="weui-cell">
-        <div class="weui-cell__bd">
-            <p class="font">下单时间：2017年7月24日12:08:58</p>
-        </div>
-        <div class="weui-cell__ft font"><a href="javascript:void(0)">取消订单</a></div>
-    </div>
-    <div class="weui-cell weui-cell_swiped">
-        <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
-            <div class="weui-media-box__hd">
-                <img class="weui-media-box__thumb" src="framework/lg.jpg"
-                    alt="">
-            </div>
-            <div class="weui-media-box__bd">
-                <h4 class="weui-media-box__desc black">由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道</h4>
-                <p class="weui-media-box__desc">299999.00</p>
-            </div>
-            <div class="weui-media-box__ft">x2</div>
-        </a>
-    </div>
-    <div class="weui-cell">
-        <div class="weui-cell__bd">
-            <p class="font">应付金额￥13232.88</p>
-        </div>
-        <div class="weui-cell__ft">
-            <a href="javascript:;" class="weui-btn weui-btn_mini weui-btn_warn" style="display: flex;">付款</a>
-        </div>
-    </div>
-</div>
-<!-- 商品区域 -->
-
-                    <!-- 商品区域 -->
-                    <div class="weui-cells">
-                        <div class="weui-cell">
-                            <div class="weui-cell__bd">
-                                <p class="font">下单时间：2017年7月24日12:08:58</p>
-                            </div>
-                            <div class="weui-cell__ft font"><a href="javascript:void(0)">取消订单</a></div>
-                        </div>
-                        <div class="weui-cell weui-cell_swiped">
-                            <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
-                                <div class="weui-media-box__hd">
-                                    <img class="weui-media-box__thumb" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHgAAAB4CAMAAAAOusbgAAAAeFBMVEUAwAD///+U5ZTc9twOww7G8MYwzDCH4YcfyR9x23Hw+/DY9dhm2WZG0kbT9NP0/PTL8sux7LFe115T1VM+zz7i+OIXxhes6qxr2mvA8MCe6J6M4oz6/frr+us5zjn2/fa67rqB4IF13XWn6ad83nxa1loqyirn+eccHxx4AAAC/klEQVRo3u2W2ZKiQBBF8wpCNSCyLwri7v//4bRIFVXoTBBB+DAReV5sG6lTXDITiGEYhmEYhmEYhmEYhmEY5v9i5fsZGRx9PyGDne8f6K9cfd+mKXe1yNG/0CcqYE86AkBMBh66f20deBc7wA/1WFiTwvSEpBMA2JJOBsSLxe/4QEEaJRrASP8EVF8Q74GbmevKg0saa0B8QbwBdjRyADYxIhqxAZ++IKYtciPXLQVG+imw+oo4Bu56rjEJ4GYsvPmKOAB+xlz7L5aevqUXuePWVhvWJ4eWiwUQ67mK51qPj4dFDMlRLBZTqF3SDvmr4BwtkECu5gHWPkmDfQh02WLxXuvbvC8ku8F57GsI5e0CmUwLz1kq3kD17R1In5816rGvQ5VMk5FEtIiWislTffuDpl/k/PzscdQsv8r9qWq4LRWX6tQYtTxvI3XyrwdyQxChXioOngH3dLgOFjk0all56XRi/wDFQrGQU3Os5t0wJu1GNtNKHdPqYaGYQuRDfbfDf26AGLYSyGS3ZAK4S8XuoAlxGSdYMKwqZKM9XJMtyqXi7HX/CiAZS6d8bSVUz5J36mEMFDTlAFQzxOT1dzLRljjB6+++ejFqka+mXIe6F59mw22OuOw1F4T6lg/9VjL1rLDoI9Xzl1MSYDNHnPQnt3D1EE7PrXjye/3pVpr1Z45hMUdcACc5NVQI0bOdS1WA0wuz73e7/5TNqBPhQXPEFGJNV2zNqWI7QKBd2Gn6AiBko02zuAOXeWIXjV0jNqdKegaE/kJQ6Bfs4aju04lMLkA2T5wBSYPKDGF3RKhFYEa6A1L1LG2yacmsaZ6YPOSAMKNsO+N5dNTfkc5Aqe26uxHpx7ZirvgCwJpWq/lmX1hA7LyabQ34tt5RiJKXSwQ+0KU0V5xg+hZrd4Bn1n4EID+WkQdgLfRNtvil9SPfwy+WQ7PFBWQz6dGWZBLkeJFXZGCfLUjCgGgqXo5TuSu3cugdcTv/HjqnBTEMwzAMwzAMwzAMwzAMw/zf/AFbXiOA6frlMAAAAABJRU5ErkJggg=="
-                                        alt="">
-                                </div>
-                                <div class="weui-media-box__bd">
-                                    <h4 class="weui-media-box__desc black">由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道</h4>
-                                    <p class="weui-media-box__desc">299999.00</p>
-                                </div>
-                                <div class="weui-media-box__ft">x2</div>
-                            </a>
-                            <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
-                                <div class="weui-media-box__hd">
-                                    <img class="weui-media-box__thumb" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHgAAAB4CAMAAAAOusbgAAAAeFBMVEUAwAD///+U5ZTc9twOww7G8MYwzDCH4YcfyR9x23Hw+/DY9dhm2WZG0kbT9NP0/PTL8sux7LFe115T1VM+zz7i+OIXxhes6qxr2mvA8MCe6J6M4oz6/frr+us5zjn2/fa67rqB4IF13XWn6ad83nxa1loqyirn+eccHxx4AAAC/klEQVRo3u2W2ZKiQBBF8wpCNSCyLwri7v//4bRIFVXoTBBB+DAReV5sG6lTXDITiGEYhmEYhmEYhmEYhmEY5v9i5fsZGRx9PyGDne8f6K9cfd+mKXe1yNG/0CcqYE86AkBMBh66f20deBc7wA/1WFiTwvSEpBMA2JJOBsSLxe/4QEEaJRrASP8EVF8Q74GbmevKg0saa0B8QbwBdjRyADYxIhqxAZ++IKYtciPXLQVG+imw+oo4Bu56rjEJ4GYsvPmKOAB+xlz7L5aevqUXuePWVhvWJ4eWiwUQ67mK51qPj4dFDMlRLBZTqF3SDvmr4BwtkECu5gHWPkmDfQh02WLxXuvbvC8ku8F57GsI5e0CmUwLz1kq3kD17R1In5816rGvQ5VMk5FEtIiWislTffuDpl/k/PzscdQsv8r9qWq4LRWX6tQYtTxvI3XyrwdyQxChXioOngH3dLgOFjk0all56XRi/wDFQrGQU3Os5t0wJu1GNtNKHdPqYaGYQuRDfbfDf26AGLYSyGS3ZAK4S8XuoAlxGSdYMKwqZKM9XJMtyqXi7HX/CiAZS6d8bSVUz5J36mEMFDTlAFQzxOT1dzLRljjB6+++ejFqka+mXIe6F59mw22OuOw1F4T6lg/9VjL1rLDoI9Xzl1MSYDNHnPQnt3D1EE7PrXjye/3pVpr1Z45hMUdcACc5NVQI0bOdS1WA0wuz73e7/5TNqBPhQXPEFGJNV2zNqWI7QKBd2Gn6AiBko02zuAOXeWIXjV0jNqdKegaE/kJQ6Bfs4aju04lMLkA2T5wBSYPKDGF3RKhFYEa6A1L1LG2yacmsaZ6YPOSAMKNsO+N5dNTfkc5Aqe26uxHpx7ZirvgCwJpWq/lmX1hA7LyabQ34tt5RiJKXSwQ+0KU0V5xg+hZrd4Bn1n4EID+WkQdgLfRNtvil9SPfwy+WQ7PFBWQz6dGWZBLkeJFXZGCfLUjCgGgqXo5TuSu3cugdcTv/HjqnBTEMwzAMwzAMwzAMwzAMw/zf/AFbXiOA6frlMAAAAABJRU5ErkJggg=="
-                                        alt="">
-                                </div>
-                                <div class="weui-media-box__bd">
-                                    <h4 class="weui-media-box__desc black">由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道</h4>
-                                    <p class="weui-media-box__desc">299999.00</p>
-                                </div>
-                                <div class="weui-media-box__ft">x2</div>
-                            </a>
-                        </div>
-                        <div class="weui-cell">
-                            <div class="weui-cell__bd">
-                                <p class="font">应付金额￥13232.88</p>
-                            </div>
-                            <div class="weui-cell__ft">
-                                <a href="javascript:;" class="weui-btn weui-btn_mini weui-btn_warn" style="display: flex;">付款</a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- 商品区域 -->
-
-
-
-
+                    <router-view></router-view>
                 </div>
             </div>
         </div>
     </div>
 </template>
 
+<!-- 菜单切换 -->
+<template id="orderTab1">
+    <div>  <!-- 商品区域 -->
+        <div class="weui-cells" v-for="items in goodsList">        
+            <div class="weui-cell">
+                <div class="weui-cell__bd">
+                    <p class="font">下单时间:{{items.nextTime}}</p>
+                </div>
+                <div class="weui-cell__ft font">
+                    <a v-show="items.orderStatus==0" href="javascript:void(0)">取消订单</a>
+                    <a v-show="items.orderStatus==1" href="javascript:void(0)">已支付</a>
+                    <a v-show="items.orderStatus==2" href="javascript:void(0)">已取消</a>
+                    <a v-show="items.orderStatus==3" href="javascript:void(0)">已完成</a>
+                </div>  
+            </div>
+            <div class="weui-cell weui-cell_swiped" v-for="goodsList in items.list">
+               
+                <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
+                    <div class="weui-media-box__hd">
+                        <img class="weui-media-box__thumb" :src="goodsList.src"
+                            alt="">
+                    </div>
+                    <div class="weui-media-box__bd">
+                        <h4 class="weui-media-box__desc black">{{goodsList.title}}</h4>
+                        <p class="weui-media-box__desc">￥{{goodsList.price}}</p>
+                    </div>
+                    <div class="weui-media-box__ft">x{{goodsList.values}}</div>
+                </a>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__bd">
+                      <input type="hidden" :value="goodsList.goodsId"> 
+                    <p class="font">应付金额￥ {{items.totalPrices}}</p>
+                </div>
+                <div class="weui-cell__ft">
+                    <a href="javascript:;"  v-show="items.orderStatus==0" class="weui-btn weui-btn_mini weui-btn_warn" style="display: flex;">付款</a>
+                    <a href="javascript:;"  v-show="items.orderStatus==1" class="weui-btn weui-btn_mini weui-btn_default" style="display: flex; margin-top:0">确认收货</a>
+                    <a href="javascript:;"  v-show="items.orderStatus==3" class="weui-btn weui-btn_mini weui-btn_default" style="display: flex; margin-top:0">申请售后</a>
+                </div>
+            </div>
+        </div>
+        <!-- 商品区域 --></div>
+</template>
+<!-- 菜单切换 -->
+<template id="orderTab2">
+    <div>  <!-- 商品区域 -->
+        <div class="weui-cells" v-for="items in goodsList">        
+            <div class="weui-cell">
+                <div class="weui-cell__bd">
+                    <p class="font">下单时间:{{items.nextTime}}</p>
+                </div>
+                <div class="weui-cell__ft font">
+                    <a v-show="items.orderStatus==0" href="javascript:void(0)">取消订单</a>
+                    <a v-show="items.orderStatus==1" href="javascript:void(0)">已支付</a>
+                    <a v-show="items.orderStatus==2" href="javascript:void(0)">已取消</a>
+                    <a v-show="items.orderStatus==3" href="javascript:void(0)">已完成</a>
+                </div>  
+            </div>
+            <div class="weui-cell weui-cell_swiped" v-for="goodsList in items.list">
+               
+                <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
+                    <div class="weui-media-box__hd">
+                        <img class="weui-media-box__thumb" :src="goodsList.src"
+                            alt="">
+                    </div>
+                    <div class="weui-media-box__bd">
+                        <h4 class="weui-media-box__desc black">{{goodsList.title}}</h4>
+                        <p class="weui-media-box__desc">￥{{goodsList.price}}</p>
+                    </div>
+                    <div class="weui-media-box__ft">x{{goodsList.values}}</div>
+                </a>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__bd">
+                      <input type="hidden" :value="goodsList.goodsId"> 
+                    <p class="font">应付金额￥ {{items.totalPrices}}</p>
+                </div>
+                <div class="weui-cell__ft">
+                    <a href="javascript:;"  v-show="items.orderStatus==0" class="weui-btn weui-btn_mini weui-btn_warn" style="display: flex;">付款</a>
+                    <a href="javascript:;"  v-show="items.orderStatus==1" class="weui-btn weui-btn_mini weui-btn_default" style="display: flex; margin-top:0">确认收货</a>
+                    <a href="javascript:;"  v-show="items.orderStatus==3" class="weui-btn weui-btn_mini weui-btn_default" style="display: flex; margin-top:0">申请售后</a>
+                </div>
+            </div>
+        </div>
+        <!-- 商品区域 --></div>
+</template>
+<!-- 菜单切换 -->
+<template id="orderTab3">
+    <div>  <!-- 商品区域 -->
+        <div class="weui-cells" v-for="items in goodsList">        
+            <div class="weui-cell">
+                <div class="weui-cell__bd">
+                    <p class="font">下单时间:{{items.nextTime}}</p>
+                </div>
+                <div class="weui-cell__ft font">
+                    <a v-show="items.orderStatus==0" href="javascript:void(0)">取消订单</a>
+                    <a v-show="items.orderStatus==1" href="javascript:void(0)">已支付</a>
+                    <a v-show="items.orderStatus==2" href="javascript:void(0)">已取消</a>
+                    <a v-show="items.orderStatus==3" href="javascript:void(0)">已完成</a>
+                </div>  
+            </div>
+            <div class="weui-cell weui-cell_swiped" v-for="goodsList in items.list">
+               
+                <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
+                    <div class="weui-media-box__hd">
+                        <img class="weui-media-box__thumb" :src="goodsList.src"
+                            alt="">
+                    </div>
+                    <div class="weui-media-box__bd">
+                        <h4 class="weui-media-box__desc black">{{goodsList.title}}</h4>
+                        <p class="weui-media-box__desc">￥{{goodsList.price}}</p>
+                    </div>
+                    <div class="weui-media-box__ft">x{{goodsList.values}}</div>
+                </a>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__bd">
+                      <input type="hidden" :value="goodsList.goodsId"> 
+                    <p class="font">应付金额￥ {{items.totalPrices}}</p>
+                </div>
+                <div class="weui-cell__ft">
+                    <a href="javascript:;"  v-show="items.orderStatus==0" class="weui-btn weui-btn_mini weui-btn_warn" style="display: flex;">付款</a>
+                    <a href="javascript:;"  v-show="items.orderStatus==1" class="weui-btn weui-btn_mini weui-btn_default" style="display: flex; margin-top:0">确认收货</a>
+                    <a href="javascript:;"  v-show="items.orderStatus==3" class="weui-btn weui-btn_mini weui-btn_default" style="display: flex; margin-top:0">申请售后</a>
+                </div>
+            </div>
+        </div>
+        <!-- 商品区域 --></div>
+</template>
+<!-- 菜单切换 -->
+<template id="orderTab4">
+    <div>  <!-- 商品区域 -->
+        <router-link to="/orderDet/3232">
+        <div class="weui-cells" v-for="items in goodsList">        
+            <div class="weui-cell">
+                <div class="weui-cell__bd">
+                    <p class="font">下单时间:{{items.nextTime}}</p>
+                </div>
+                <div class="weui-cell__ft font">
+                    <a v-show="items.orderStatus==0" href="javascript:void(0)">取消订单</a>
+                    <a v-show="items.orderStatus==1" href="javascript:void(0)">已支付</a>
+                    <a v-show="items.orderStatus==2" href="javascript:void(0)">已取消</a>
+                    <a v-show="items.orderStatus==3" href="javascript:void(0)">已完成</a>
+                </div>  
+            </div>
+            <div class="weui-cell weui-cell_swiped" v-for="goodsList in items.list">
+               
+                <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
+                    <div class="weui-media-box__hd">
+                        <img class="weui-media-box__thumb" :src="goodsList.src"
+                            alt="">
+                    </div>
+                    <div class="weui-media-box__bd">
+                        <h4 class="weui-media-box__desc black">{{goodsList.title}}</h4>
+                        <p class="weui-media-box__desc">￥{{goodsList.price}}</p>
+                    </div>
+                    <div class="weui-media-box__ft">x{{goodsList.values}}</div>
+                </a>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__bd">
+                      <input type="hidden" :value="goodsList.goodsId"> 
+                    <p class="font">应付金额￥ {{items.totalPrices}}</p>
+                </div>
+                <div class="weui-cell__ft">
+                    <a href="javascript:;"  v-show="items.orderStatus==0" class="weui-btn weui-btn_mini weui-btn_warn" style="display: flex;">付款</a>
+                    <a href="javascript:;"  v-show="items.orderStatus==1" class="weui-btn weui-btn_mini weui-btn_default" style="display: flex; margin-top:0">确认收货</a>
+                    <a href="javascript:;"  v-show="items.orderStatus==3" class="weui-btn weui-btn_mini weui-btn_default" style="display: flex; margin-top:0">申请售后</a>
+                </div>
+            </div>
+        </div>
+        </router-link>
+        <!-- 商品区域 --></div>
+</template>
 <!-- 地址 -->
 <template id="cartAddress">
      <div class="page navbar js_show zindex" >
@@ -711,6 +763,168 @@
 <!-- 商品列表 -->
 <template id="goodsList">
 
+</template>
+<!-- 商品详情 -->
+<template id="orderDet">
+    <div class="page js_show zindex">
+        <div class="page__bd" style="height: 100%;">
+            <div class="weui-tab">
+                <!-- 顶部 -->
+                <div class="weui-flex c-h weui-navbar">
+                    <div class="c-left">
+                        <div class="placeholder">
+                            <a href="javascript:history.go(-1)" class="iconfont icon-zuoyou1"></a>
+                        </div>
+                    </div>
+                    <div class="weui-flex__item c-center">
+                        <div class="placeholder"><span>订单详情</span></div>
+                    </div>
+                    <div class="c-right">
+                        <div class="placeholder">
+                            <a href="javascript:void(0)"></a>
+                        </div>
+                    </div>
+                </div>
+                <!-- 顶部 -->
+
+                <!-- 中间部分 -->
+                <div class="weui-tab__panel paddingBottom">
+
+                    <!--订单金额：  -->
+                    <div class="weui-cells" style="margin:0">
+                        <div class="weui-cell">
+                            <div class="weui-cell__bd">
+                                <p class="weui-media-box__desc colorBlack">订单编号：200722222222222222 </p>
+                                <p class="weui-media-box__desc colorBlack">下单时间：2017年7月21日14:12:38</p>
+                            </div>
+                            <div class="weui-cell__ft red">代付款</div>
+                        </div>
+                    </div>
+
+                    <!--  -->
+
+                    <!-- 商品区域 -->
+                    <div class="weui-panel weui-panel_access">
+                        <div class="weui-panel__hd">商品清单：(共1件)</div>
+                        <div class="weui-panel__bd">
+                            <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
+                                <div class="weui-media-box__hd">
+                                    <img class="weui-media-box__thumb" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHgAAAB4CAMAAAAOusbgAAAAeFBMVEUAwAD///+U5ZTc9twOww7G8MYwzDCH4YcfyR9x23Hw+/DY9dhm2WZG0kbT9NP0/PTL8sux7LFe115T1VM+zz7i+OIXxhes6qxr2mvA8MCe6J6M4oz6/frr+us5zjn2/fa67rqB4IF13XWn6ad83nxa1loqyirn+eccHxx4AAAC/klEQVRo3u2W2ZKiQBBF8wpCNSCyLwri7v//4bRIFVXoTBBB+DAReV5sG6lTXDITiGEYhmEYhmEYhmEYhmEY5v9i5fsZGRx9PyGDne8f6K9cfd+mKXe1yNG/0CcqYE86AkBMBh66f20deBc7wA/1WFiTwvSEpBMA2JJOBsSLxe/4QEEaJRrASP8EVF8Q74GbmevKg0saa0B8QbwBdjRyADYxIhqxAZ++IKYtciPXLQVG+imw+oo4Bu56rjEJ4GYsvPmKOAB+xlz7L5aevqUXuePWVhvWJ4eWiwUQ67mK51qPj4dFDMlRLBZTqF3SDvmr4BwtkECu5gHWPkmDfQh02WLxXuvbvC8ku8F57GsI5e0CmUwLz1kq3kD17R1In5816rGvQ5VMk5FEtIiWislTffuDpl/k/PzscdQsv8r9qWq4LRWX6tQYtTxvI3XyrwdyQxChXioOngH3dLgOFjk0all56XRi/wDFQrGQU3Os5t0wJu1GNtNKHdPqYaGYQuRDfbfDf26AGLYSyGS3ZAK4S8XuoAlxGSdYMKwqZKM9XJMtyqXi7HX/CiAZS6d8bSVUz5J36mEMFDTlAFQzxOT1dzLRljjB6+++ejFqka+mXIe6F59mw22OuOw1F4T6lg/9VjL1rLDoI9Xzl1MSYDNHnPQnt3D1EE7PrXjye/3pVpr1Z45hMUdcACc5NVQI0bOdS1WA0wuz73e7/5TNqBPhQXPEFGJNV2zNqWI7QKBd2Gn6AiBko02zuAOXeWIXjV0jNqdKegaE/kJQ6Bfs4aju04lMLkA2T5wBSYPKDGF3RKhFYEa6A1L1LG2yacmsaZ6YPOSAMKNsO+N5dNTfkc5Aqe26uxHpx7ZirvgCwJpWq/lmX1hA7LyabQ34tt5RiJKXSwQ+0KU0V5xg+hZrd4Bn1n4EID+WkQdgLfRNtvil9SPfwy+WQ7PFBWQz6dGWZBLkeJFXZGCfLUjCgGgqXo5TuSu3cugdcTv/HjqnBTEMwzAMwzAMwzAMwzAMw/zf/AFbXiOA6frlMAAAAABJRU5ErkJggg=="
+                                        alt="">
+                                </div>
+                                <div class="weui-media-box__bd">
+                                    <h4 class="weui-media-box__desc black">由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道</h4>
+                                    <p class="weui-media-box__desc">299999.00</p>
+                                </div>
+                                <div class="weui-media-box__ft">x2</div>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- 商品区域 -->
+                    <div class="weui-cells">
+                        <div class="weui-cell">
+                            <div class="weui-cell__bd">
+                                <p class="weui-media-box__desc black">祗堂空幻 <span class="black">13888888888</span></p>
+                                <p class="weui-media-box__desc colorBlack">由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="weui-tabbar bord">
+
+                        <div class=" weui-flex__item ">
+                            <p class="weui-cell__ft colorRed font money">实付:￥1377.90</p>
+                        </div>
+                        <div class="weui-flex__item ">
+                            <a href="javascript:; " class="weui-btn weui-btn_plain-default margin font">取消订单</a>
+                        </div>
+                        <div class="weui-flex__item ">
+                            <router-link to="/wxpay/1111"class="weui-btn weui-btn_warn margin font">付款</router-link>
+                         
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+<!-- 付款页面 -->
+<template id="wxpay">
+        <div class="page navbar js_show zindex">
+                <div class="page__bd" style="height: 100%;">
+                    <div class="weui-tab">
+                        <div class="weui-navbar">
+                            <div class="weui-flex c-h">
+                                <div class="c-left">
+                                    <div class="placeholder">
+                                        <a href="javascript:history.go(-1)" class="iconfont icon-zuoyou1"></a>
+                                    </div>
+                                </div>
+                                <div class="weui-flex__item c-center">
+                                    <div class="placeholder"><span>确认支付</span></div>
+                                </div>
+                                <div class="c-right">
+                                    <div class="placeholder">
+                                        <a href="javascript:void(0)"></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="weui-tab__panel">
+        
+                            <!-- 内 -->
+        
+        
+                            <!--订单金额：  -->
+                            <div class="weui-cells">
+                                <div class="weui-cell">
+                                    <div class="weui-cell__bd">
+                                        <p>订单金额：</p>
+                                    </div>
+                                    <div class="weui-cell__ft red">9999999.00元</div>
+                                </div>
+                            </div>
+        
+                            <!--  -->
+        
+        
+                            <div class="weui-cells weui-cells_checkbox">
+                                <label class="weui-cell weui-check__label" for="wxpay">
+                    <div class="weui-cell__bd">
+                        <p class="iconfont icon-weixin wxGreen"><span class="wxText">微信支付</span></p>
+                    </div>
+                    <div class="weui-cell__hd">
+                        <input type="radio" class="weui-check" name="wxpay" id="wxpay" checked="checked">
+                        <i class="weui-icon-checked"></i>
+                    </div>
+                </label>
+        
+                                <!-- <label class="weui-cell weui-check__label" for="s11">
+                    <div class="weui-cell__bd">
+                        <p class="iconfont icon-weixin">支付宝</p>
+                    </div>
+                    <div class="weui-cell__hd">
+                        <input type="radio" class="weui-check" name="wxpay" id="s11" >
+                        <i class="weui-icon-checked"></i>
+                    </div>
+                </label> -->
+        
+                            </div>
+        
+                            <div class="weui-btn-area">
+                                <a class="weui-btn weui-btn_primary" href="javascript:" id="showTooltips">去支付</a>
+                            </div>
+        
+                            <!-- 内 -->
+        
+        
+        
+                        </div>
+                    </div>
+                </div>
+            </div>
 </template>
 
 
