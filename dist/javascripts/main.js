@@ -1608,7 +1608,7 @@ window.onload = function (params) {
         }
     });
     var goodsList = Vue.component('goodsList', {
-        template: '#maps', //用什么模板来渲染他
+        template: '#goodsList', //用什么模板来渲染他
         data: function data() {
             return {};
         }
@@ -1777,6 +1777,19 @@ window.onload = function (params) {
         }
     });
 
+    var goodsDet = Vue.component('goodsDet', {
+        template: '#goodsDet', //用什么模板来渲染他
+        data: function data() {
+            return {};
+        },
+        mounted: function mounted() {
+            var swiper = new Swiper('.swiper-container', {
+                pagination: '.swiper-pagination',
+                paginationClickable: true
+            });
+        }
+    });
+
     // 0. 如果使用模块化机制编程，導入Vue和VueRouter，要调用 Vue.use(VueRouter)
 
     // 1. 定义（路由）组件。
@@ -1815,6 +1828,9 @@ window.onload = function (params) {
     }, {
         path: '/goodsList',
         component: goodsList
+    }, {
+        path: '/goodsDet',
+        component: goodsDet
     }, {
         path: '/my',
         component: my
@@ -1858,7 +1874,7 @@ window.onload = function (params) {
     // 3. 创建 router 实例，然后传 `routes` 配置
     // 你还可以传别的配置参数, 不过先这么简单着吧。
     var router = new VueRouter({
-        mode: 'history',
+        // mode: 'history',
         routes: routes, // （缩写）相当于 routes: routes
         linkActiveClass: 'linkActive', //激活后的连接颜色Class
         scrollBehavior: function scrollBehavior(to, from, savedPosition) {
